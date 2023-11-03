@@ -44,4 +44,7 @@ Terms of Service
 About Us
 Blog or News (if applicable)
 Location-Based Pages (if applicable)
-Payment Processing Pages (if applicable)    
+Payment Processing Pages (if applicable)
+
+
+link for car info - https://www.car.info/en-se/bmw/x5/specs
