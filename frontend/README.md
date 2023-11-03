@@ -48,3 +48,5 @@ Payment Processing Pages (if applicable)
 
 
 link for car info - https://www.car.info/en-se/bmw/x5/specs
+ui library - daisUi ~ tailwindcss prebuilt components
+for user management - clerk
