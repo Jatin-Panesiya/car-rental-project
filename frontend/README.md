@@ -1,4 +1,5 @@
-date - 11/3/2023, work - packages installed , header and started making abstrct, status - pass
+date - 03/11/2023, work - packages installed , header and started making abstrct, status - pass
+date - 04/11/2023, work - searching for API of Cars, status - failed
 
 features -
 User Registration and Authentication

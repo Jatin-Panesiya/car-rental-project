@@ -11,6 +11,10 @@
     font-family: poppins-bold;
     src: url('../assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf');
 }
+@font-face {
+    font-family: poppins-bold;
+    src: url('../assets/fonts/Rajdhani-Bold.ttf');
+}
 .poppins{
     font-family: poppins;
 }

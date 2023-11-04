@@ -22,9 +22,10 @@ function Home() {
   ]
 
   return (
-    <div className="poppins bg-[#E5E0FF]">
+    <div className="poppins">
       <Header />
       <HeroSection/>
+      <Footer/>
     </div>
   )
 }

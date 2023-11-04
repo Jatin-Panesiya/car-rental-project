@@ -1,7 +1,9 @@
 "use client"
 
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import logo from '@/assets/images/logo.png'
 
 const Header = () => {
     const headerData = [
@@ -33,8 +35,10 @@ const Header = () => {
             <div className='flex items-center gap-5 bg-slate-50 px-5 py-3 justify-between fixed w-full '>
                 {/* Logo*/}
 
-                <div className='text-xl text-blue-500 uppercase'>
-                    <h1 className='poppins-bold'>J & P Cars</h1>
+                <div className=' flex items-center gap-2'>
+                    <div className='grid'>
+                        <h1 className='poppins-bold text-3xl text-blue-500 uppercase'>J & P Cars</h1>
+                    </div>
                 </div>
 
                 {/* desktop menu*/}
