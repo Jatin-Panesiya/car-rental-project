@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: poppins;
+    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: poppins-bold;
+    src: url('../assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf');
+}
+.poppins{
+    font-family: poppins;
+}
+.poppins-bold{
+    font-family: poppins-bold;
+}

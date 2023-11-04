@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-
+import './globals.css'
+import HeroSection from "@/components/HeroSection";
 function Home() {
 
   const carData = [
@@ -21,17 +22,10 @@ function Home() {
   ]
 
   return (
-    <>
+    <div className="poppins bg-[#E5E0FF]">
       <Header />
-      {
-        carData.map((data)=>{
-          <div key={data.id}>
-              <img src={data.carImages.full} alt="" />
-          </div>
-        })
-      }
-      <h1>Home Page</h1>
-    </>
+      <HeroSection/>
+    </div>
   )
 }
 
