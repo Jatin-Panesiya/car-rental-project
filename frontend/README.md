@@ -2,52 +2,50 @@ date - 03/11/2023, work - packages installed , header and started making abstrct
 <br/>
 date - 04/11/2023, work - searching for API of Cars, status - failed
 <br/>
+date - 05/11/2023, work - work on abstract of project - pass
+<br/>
+
 
 features -
-User Registration and Authentication
-Car Listings and Details
-Search and Filter Options
-Booking and Reservation System
+User Registration and Login
+Car Listings
+Car Detail Pages
+Reservation Management
 User Profiles
-Reviews and Ratings
-Payment Integration
+Payment Processing
+Search and Filters
+User Reviews and Ratings
 Admin Dashboard
-Car Management for Admin
-Booking History for Users
-Pricing and Availability Calendar
+Notifications
+Booking History
+Vehicle Availability Calendar
+Pricing and Discounts
+Contact and Support
 Email Notifications
-Location-Based Services
-Car Availability Alerts
-Support and Help Center
-Responsive Design for Mobile Devices
-Integration with Mapping and GPS Services
-Multi-Language Support
-Social Media Integration
-Feedback and Review System for Users
+Vehicle Pickup and Return Reminders
+Booking Cancellation
+Feedback and Surveys
+Document Upload for Verification
+Fuel Policy Information
+Vehicle Inventory Management
 
 pages - 
-Homepage
-Car Listings
-Car Details
-User Registration
-User Login
-User Profile
-Booking Process
-Admin Dashboard
-Admin Car Management
-Admin Booking Management
-Contact and Support
-Reviews and Ratings
-Pricing and Policies
-Confirmation and Receipt
-Search Results
-404 Error Page
-Privacy Policy
-Terms of Service
-About Us
-Blog or News (if applicable)
-Location-Based Pages (if applicable)
-Payment Processing Pages (if applicable)
+1. Login
+2. Register
+3. User Profile
+4. Document Upload
+5. Car Listings
+6. Car Detail
+7. Reservation
+8. Booking History
+9. Payment
+10. Car Search
+11. Reviews
+12. Admin Dashboard
+13. Notifications
+14. Contact and Support
+15. Pricing and Discounts
+16. Feedback and Surveys
 
 
 link for car info - https://www.car.info/en-se/bmw/x5/specs
