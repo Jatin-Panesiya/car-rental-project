@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import logo from '@/assets/images/logo.png'
 
+
 const Header = () => {
     const headerData = [
         {
@@ -29,24 +30,24 @@ const Header = () => {
         }
     ];
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    return (
+    
+    return (    
         <div >
-            <div className='flex items-center gap-5 bg-slate-50 px-5 py-3 justify-between fixed w-full '>
+            <div className='flex items-center z-10 gap-5 bg-transparent shadow-md  px-5 py-5  justify-between fixed w-full '>
                 {/* Logo*/}
 
-                <div className=' flex items-center gap-2'>
-                    <div className='grid'>
-                        <h1 className='poppins-bold text-3xl text-blue-500 uppercase'>J & P Cars</h1>
-                    </div>
+
+                <div className=''>
+                    <h1 className='poppins-bold text-3xl flex items-center text-emerald-500 uppercase'>J&P Cars</h1>
                 </div>
+
 
                 {/* desktop menu*/}
 
                 <div className='hidden sm:flex gap-5 text-xl '>
                     {headerData.map(({ linkName, linkPath }, i) => {
                         return (
-                            <Link key={i} href={linkPath}>{linkName}</Link>
+                            <Link key={i} className='hover:text-emerald-500 ' href={linkPath}>{linkName}</Link>
                         )
                     })}
                 </div>
@@ -56,7 +57,7 @@ const Header = () => {
                     <div className='grid absolute bg-slate-100 text-center text-black left-0 justify-center top-14 w-full sm:hidden gap-5  py-3 text-xl'>
                         {headerData.map(({ linkName, linkPath }, i) => {
                             return (
-                                <Link key={i} href={linkPath}>{linkName}</Link>
+                                <Link key={i} className='hover:text-emerald-500' href={linkPath}>{linkName}</Link>
                             )
                         })}
                     </div>

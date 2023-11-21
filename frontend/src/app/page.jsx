@@ -25,7 +25,6 @@ function Home() {
     <div className="poppins">
       <Header />
       <HeroSection/>
-      <Footer/>
     </div>
   )
 }
