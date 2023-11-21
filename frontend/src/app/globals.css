@@ -26,3 +26,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.bgC{
+    background-color: linear-gradient(rgb(187, 247, 208), rgb(34, 197, 94));
+}

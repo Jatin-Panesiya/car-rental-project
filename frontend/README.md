@@ -4,6 +4,8 @@ date - 04/11/2023, work - searching for API of Cars, status - failed
 <br/>
 date - 05/11/2023, work - work on abstract of project - pass
 <br/>
+date - 21/11/2023, work - work on herosection - working
+
 
 
 features -

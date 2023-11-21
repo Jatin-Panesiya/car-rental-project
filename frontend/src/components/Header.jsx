@@ -30,10 +30,10 @@ const Header = () => {
         }
     ];
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    
-    return (    
+
+    return (
         <div >
-            <div className='flex items-center z-10 gap-5 bg-transparent shadow-md  px-5 py-5  justify-between fixed w-full '>
+            <div className='flex items-center z-10 gap-5 bg-transparent shadow-md  px-5 py-5  justify-between fixed w-full  '>
                 {/* Logo*/}
 
 
@@ -44,7 +44,7 @@ const Header = () => {
 
                 {/* desktop menu*/}
 
-                <div className='hidden sm:flex gap-5 text-xl '>
+                <div className='hidden sm:flex gap-5 text-xl font-semibold'>
                     {headerData.map(({ linkName, linkPath }, i) => {
                         return (
                             <Link key={i} className='hover:text-emerald-500 ' href={linkPath}>{linkName}</Link>
@@ -53,16 +53,18 @@ const Header = () => {
                 </div>
 
                 {/* mobile menu*/}
-                {isMenuOpen ?
+                {isMenuOpen &&
                     <div className='grid absolute bg-slate-100 text-center text-black left-0 justify-center top-14 w-full sm:hidden gap-5  py-3 text-xl'>
-                        {headerData.map(({ linkName, linkPath }, i) => {
-                            return (
-                                <Link key={i} className='hover:text-emerald-500' href={linkPath}>{linkName}</Link>
-                            )
-                        })}
+                        {
+                            headerData.map(({ linkName, linkPath }, i) => {
+                                return (
+                                    <Link key={i} className='hover:text-emerald-500' href={linkPath}>{linkName}</Link>
+                                )
+                            })
+                        }
                     </div>
 
-                    : null}
+                }
 
                 {/* three bar label */}
                 <label className=" btn-circle swap swap-rotate sm:hidden ">
