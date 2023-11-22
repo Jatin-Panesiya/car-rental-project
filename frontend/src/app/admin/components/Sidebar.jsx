@@ -1,80 +1,115 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { IoCarSharp } from "react-icons/io5";
+import { FaCartShopping } from "react-icons/fa6";
+import { MdDirectionsCar } from "react-icons/md";
+import { CgMenuCheese } from "react-icons/cg";
+import { RiFeedbackFill } from "react-icons/ri";
+import { FaUser } from "react-icons/fa";
+import { GrPowerShutdown } from "react-icons/gr";
+import { useRouter } from "next/navigation";
+
 const Sidebar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleHamburger = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-
-  // const links = 'manage users, manage orders, logout,manage cars, feedbacks'
+  const router = useRouter();
   const links = [
     {
-      id:1,
-      linkName:'',
-      linkPath:'',
-      linkClassName:'',
-      lableName:'',
-    }
-  ]
+      id: 1,
+      linkPath: "/admin/manage-cars",
+      icon: MdDirectionsCar,
+      linkName: "Manage Cars",
+      linkNameShort: "Cars",
+    },
+    {
+      id: 2,
+      linkPath: "/admin/manage-cars",
+      icon: FaUser,
+      linkName: "Manage Users",
+      linkNameShort: "Users",
+    },
+    {
+      id: 3,
+      linkPath: "/admin/manage-cars",
+      icon: FaCartShopping,
+      linkName: "Manage Orders",
+      linkNameShort: "Orders",
+    },
+    {
+      id: 4,
+      linkPath: "/admin/manage-cars",
+      icon: RiFeedbackFill,
+      linkName: "Feedbacks",
+      linkNameShort: "Feeback",
+    },
+    {
+      id: 5,
+      linkPath: "/admin/manage-cars",
+      icon: GrPowerShutdown,
+      linkName: "Logout",
+      linkNameShort: "Logout",
+    },
+  ];
   return (
-    <div className={`sidebar ${isMenuOpen ? "open" : "closed"} bg-emerald-300 rounded-md `}>
-      <div className="flex justify-end px-3 shadow-md">
-        
-        <label className=" btn-circle swap swap-rotate ">
-          <input type="checkbox" onClick={handleHamburger} />
-
-          <svg
-            className="swap-on fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 512 512"
-          >
-            <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-          </svg>
-
-          <svg
-            className="swap-off fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 512 512"
-          >
-            <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-          </svg>
-        </label>
+    <div className="border fixed h-screen">
+      <div className="flex pl-5  rounded  bg-slate-50">
+        <CgMenuCheese
+          onClick={handleHamburger}
+          className="cursor-pointer text-3xl"
+        />
       </div>
 
-      <div className="menu">
-        {isMenuOpen ? (
-          <Link href={"admin/manage-cars"} className="flex items-center justify-center py-1 gap-2">
-            <p> Manage Cars </p>
-            <p className="text-lg font-semibold">
-              <IoCarSharp />
-            </p>
-          </Link>
-        ) : (
-          <div>
-
-            <span className=" grid ">
-              <Link
-                className="text-xl font-semibold flex justify-center hover-trigger relative"
-                href={"admin/manage-cars"}
-              >
-                <IoCarSharp />
-              </Link>
-
-              <p className=" hover-content absolute left-16">
-                Manage cars
-              </p>
-
-            </span>
-
-          </div>
-        )}
+      <div
+        className={`sidebar ${
+          isMenuOpen ? "open" : "closed"
+        } bg-slate-50 rounded-md h-screen `}
+      >
+        <div className="menu ">
+          {isMenuOpen
+            ? links.map((data, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="hover:bg-slate-300 flex items-center justify-between  px-3 rounded my-1"
+                  >
+                    <Link
+                      href={data.linkPath}
+                      className={`flex items-center ${
+                        data.linkName === "Logout" && "text-red-500"
+                      } justify-center rounded-lg py-2 gap-2 ${
+                        router.pathname === data.linkPath ? "text-red-500" : ""
+                      }`}
+                    >
+                      <p className="text-xl font-semibold">{<data.icon />}</p>
+                      <p>{data.linkName} </p>
+                    </Link>
+                  </div>
+                );
+              })
+            : links.map((data, i) => {
+                return (
+                  <div key={i} className="hover:bg-slate-300 rounded my-1">
+                    <div>
+                      <Link
+                        className={`text-[23px] ${
+                          data.linkName === "Logout" && "text-red-500"
+                        } justify-center font-semibold  grid p-1 `}
+                        href={data.linkPath}
+                      >
+                        <p className="flex justify-center py-0.5">
+                          <data.icon />
+                        </p>
+                        <p className="text-[12px]  cursor-pointer">
+                          {data.linkNameShort}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+        </div>
       </div>
     </div>
   );

@@ -2,55 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: poppins;
-    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
-}
-@font-face {
-    font-family: poppins-bold;
-    src: url('../assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf');
+  font-family: poppins;
+  src: url("../assets/fonts/Poppins/Poppins-Regular.ttf");
 }
 @font-face {
-    font-family: poppins-bold;
-    src: url('../assets/fonts/Rajdhani-Bold.ttf');
+  font-family: poppins-bold;
+  src: url("../assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf");
 }
-.poppins{
-    font-family: poppins;
+@font-face {
+  font-family: poppins-bold;
+  src: url("../assets/fonts/Rajdhani-Bold.ttf");
 }
-.poppins-bold{
-    font-family: poppins-bold;
+.poppins {
+  font-family: poppins;
 }
-.bg-img{
-    background-image: url('../../public/mustang.avif');
-    background-repeat: no-repeat;
-    background-size: cover;
+.poppins-bold {
+  font-family: poppins-bold;
 }
-
-.sidebar {
-    width: 60px; 
-    transition: width 0.1s ease;
+.bg-img {
+  background-image: url("../../public/mustang.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .sidebar.open {
-    width: 200px;
+  width: 200px;
 }
 
 .sidebar.closed {
-    width: 60px;
+  width: 70px;
 }
-
-.menu {
-    transition: opacity 0.3s ease; 
-    opacity: 1;
-}
-
-.hover-content {
-    display: none;
-}
-
-.hover-trigger:hover + .hover-content {
-    display: block;
-    opacity: 1;
-}
-

@@ -1,11 +1,17 @@
-import React from 'react'
+"use client";
+
+import React from "react";
+import Sidebar from "../components/Sidebar";
 
 const page = () => {
   return (
-    <div>
-      <p>managecars</p>
+    <div className="flex">
+      <div>
+        <Sidebar />
+      </div>
+      <div></div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
