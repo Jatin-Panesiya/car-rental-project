@@ -26,6 +26,31 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgC{
-    background-color: linear-gradient(rgb(187, 247, 208), rgb(34, 197, 94));
+
+.sidebar {
+    width: 60px; 
+    transition: width 0.1s ease;
 }
+
+.sidebar.open {
+    width: 200px;
+}
+
+.sidebar.closed {
+    width: 60px;
+}
+
+.menu {
+    transition: opacity 0.3s ease; 
+    opacity: 1;
+}
+
+.hover-content {
+    display: none;
+}
+
+.hover-trigger:hover + .hover-content {
+    display: block;
+    opacity: 1;
+}
+
