@@ -6,7 +6,6 @@ import { CgMenuCheese } from "react-icons/cg";
 import { RiFeedbackFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { GrPowerShutdown } from "react-icons/gr";
-import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -14,7 +13,7 @@ const Sidebar = () => {
   const handleHamburger = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const router = useRouter();
+
   const links = [
     {
       id: 1,
@@ -78,9 +77,7 @@ const Sidebar = () => {
                       href={data.linkPath}
                       className={`flex items-center ${
                         data.linkName === "Logout" && "text-red-500"
-                      } justify-center rounded-lg py-2 gap-2 ${
-                        router.pathname === data.linkPath ? "text-red-500" : ""
-                      }`}
+                      } justify-center rounded-lg py-2 gap-2 `}
                     >
                       <p className="text-xl font-semibold">{<data.icon />}</p>
                       <p>{data.linkName} </p>
