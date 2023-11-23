@@ -1,7 +1,7 @@
-  "use client";
+"use client";
 
 import Link from "next/link";
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { MdDirectionsCar } from "react-icons/md";
 import { CgMenuCheese } from "react-icons/cg";
@@ -10,20 +10,20 @@ import { FaUser } from "react-icons/fa";
 import { GrPowerShutdown } from "react-icons/gr";
 import { useSelector, useDispatch } from "react-redux";
 import { setStatus } from "@/app/redux/menuSlice";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
-  
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(
+    window.innerWidth > 800 ? true : false
+  );
   const dispatch = useDispatch();
-  
+
   const currentRoute = usePathname();
-  
+
   const handleHamburger = () => {
     dispatch(setStatus(!isMenuOpen));
     setIsMenuOpen(!isMenuOpen);
   };
-
 
   const links = [
     {
@@ -64,7 +64,7 @@ const Sidebar = () => {
   ];
   return (
     <div className="border fixed h-screen">
-      <div className="flex pl-5  rounded  bg-slate-50">
+      <div className="flex pl-5 py-3 rounded  bg-slate-50">
         <CgMenuCheese
           onClick={handleHamburger}
           className={`cursor-pointer text-3xl`}
@@ -82,7 +82,9 @@ const Sidebar = () => {
                 return (
                   <div
                     key={i}
-                    className={`${currentRoute === data.linkPath && 'bg-emerald-300'} hover:bg-slate-300  flex items-center justify-between  px-3 rounded my-1`}
+                    className={`${
+                      currentRoute === data.linkPath && "bg-emerald-300"
+                    } hover:bg-slate-300  flex items-center justify-between  px-3 rounded my-1`}
                   >
                     <Link
                       href={data.linkPath}
@@ -98,22 +100,25 @@ const Sidebar = () => {
               })
             : links.map((data, i) => {
                 return (
-                  <div key={i} className={`hover:bg-slate-300 rounded my-1 ${data.linkPath === currentRoute && 'bg-emerald-300  '}`}>
-                    
-                      <Link
-                        className={`text-[23px] ${
-                          data.linkName === "Logout" && "text-red-500"
-                        } justify-center font-semibold  grid p-1 `}
-                        href={data.linkPath}
-                      >
-                        <p className="flex justify-center py-0.5">
-                          <data.icon />
-                        </p>
-                        <p className="text-[12px]  cursor-pointer">
-                          {data.linkNameShort}
-                        </p>
-                      </Link>
-                    
+                  <div
+                    key={i}
+                    className={`hover:bg-slate-300 rounded my-1 ${
+                      data.linkPath === currentRoute && "bg-emerald-300  "
+                    }`}
+                  >
+                    <Link
+                      className={`text-[23px] ${
+                        data.linkName === "Logout" && "text-red-500"
+                      } justify-center font-semibold  grid p-1 `}
+                      href={data.linkPath}
+                    >
+                      <p className="flex justify-center py-0.5">
+                        <data.icon />
+                      </p>
+                      <p className="text-[12px]  cursor-pointer">
+                        {data.linkNameShort}
+                      </p>
+                    </Link>
                   </div>
                 );
               })}

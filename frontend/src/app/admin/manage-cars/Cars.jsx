@@ -30,35 +30,39 @@ const Cars = () => {
     <>
       <p>Available Cars</p>
       <div>
-         
-        {carsData.map(({ id, image, carName, rent }) => {
+        {carsData.map(({ id, image, carName, rent }, i) => {
           return (
             <div
               key={id}
-              className="flex items-center mx-2 justify-between my-1 bg-emerald-50 rounded-md p-2 text-center"
+              className={`${
+                i % 2 === 0
+                  ? "bg-gradient-to-br from-emerald-100  via-emerald-200 to-emerald-400"
+                  : "bg-gradient-to-br  from-emerald-400  via-emerald-200 to-emerald-100"
+              }  flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center`}
             >
-              <img src={image} alt={carName} className="w-24 h-24 rounded-md" />
-              <p className="w-24 ">{carName}</p>
+              <img
+                src={image}
+                alt={carName}
+                className="w-24 imageResponsive h-24 rounded-md"
+              />
+              <p className="w-24 text__responsive">{carName}</p>
               <p className="rentResponsive">{rent}</p>
-             
-              <div className="flex items-center gap-2">
 
-                <button className="bg-emerald-400 hidden sm:block px-4 py-0.5 rounded-sm hover:bg-emerald-500">
+              <div className="flex editDeleteResponsive items-center gap-2">
+                <button className="bg-transparent border border-green-500  hidden sm:block px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold">
                   Edit
                 </button>
-                <button className="bg-emerald-400 sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500">
-                  <AiFillEdit/>
+                <button className="bg-emerald-400 edit__responsive sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500">
+                  <AiFillEdit />
                 </button>
 
-                <button className="bg-red-400 px-4 py-0.5 hidden sm:block rounded-sm hover:bg-red-500">
+                <button className="bg-transparent border border-red-500 px-4 py-0.5 hidden sm:block rounded-md hover:bg-red-500 hover:text-white transition-all duration-200 font-semibold">
                   Delete
                 </button>
-                <button className="bg-red-400 px-4 sm:hidden py-1 rounded-sm hover:bg-red-500">
-                  <MdDeleteForever/>
+                <button className="bg-red-400 px-4 edit__responsive  sm:hidden py-1 rounded-sm hover:bg-red-500">
+                  <MdDeleteForever />
                 </button>
-
               </div>
-
             </div>
           );
         })}
