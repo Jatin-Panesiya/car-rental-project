@@ -17,10 +17,10 @@ const page = () => {
 
       <div className={`${menuStatus ? "ml-52" : "ml-20"}`}>
 
-        <div>
+        <div className="my-1">
           <input
             type="search"
-            className="border border-black  outline-none rounded px-3 py-0.5 w-[75vw]"
+            className="border border-black  outline-none rounded px-3 py-1 w-full"
             placeholder="Search Cars"
           />
         </div>
@@ -28,7 +28,7 @@ const page = () => {
         <div className="my-3 flex justify-end">
           <Link
             href={"/admin/add-car"}
-            className="bg-emerald-300 px-5 py-0.5 rounded"
+            className="bg-emerald-300 px-5 py-1 text-lg hover:bg-emerald-400 rounded"
           >
             Add Car
           </Link>
