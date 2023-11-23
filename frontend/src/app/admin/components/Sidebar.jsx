@@ -73,7 +73,7 @@ const Sidebar = () => {
 
       <div
         className={`sidebar ${
-          isMenuOpen ? "open" : "closed"
+          isMenuOpen ? "w-[200px]" : "w-[70px]"
         } bg-slate-50 rounded-md h-screen `}
       >
         <div className="menu ">

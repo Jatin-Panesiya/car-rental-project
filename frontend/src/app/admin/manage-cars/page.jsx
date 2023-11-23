@@ -13,7 +13,7 @@ const page = () => {
   return (
     <>
         <Sidebar />
-      <div className={`${menuStatus ? "ml-52" : "ml-20"}  `}>
+       <div className={`${menuStatus ? "sm:ml-52" : "ml-20"}  `}>
         <Header />
         <Cars />
       </div>

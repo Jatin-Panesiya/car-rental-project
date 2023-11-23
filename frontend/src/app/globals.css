@@ -33,3 +33,10 @@
 .sidebar.closed {
   width: 70px;
 }
+
+@media (max-width:490px){
+  .rentResponsive{
+    display: none;
+
+  }
+}

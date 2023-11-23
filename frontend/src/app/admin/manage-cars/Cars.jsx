@@ -1,3 +1,6 @@
+import { AiFillEdit } from "react-icons/ai";
+import { MdDeleteForever } from "react-icons/md";
+
 const Cars = () => {
   const carsData = [
     {
@@ -32,21 +35,30 @@ const Cars = () => {
           return (
             <div
               key={id}
-              className="flex items-center justify-between my-1 bg-emerald-50 rounded-md p-2 text-center"
+              className="flex items-center mx-2 justify-between my-1 bg-emerald-50 rounded-md p-2 text-center"
             >
               <img src={image} alt={carName} className="w-24 h-24 rounded-md" />
               <p className="w-24 ">{carName}</p>
-              <p>{rent}</p>
+              <p className="rentResponsive">{rent}</p>
              
               <div className="flex items-center gap-2">
-                <button className="bg-emerald-400 px-4 py-0.5 rounded-sm hover:bg-emerald-500">
+
+                <button className="bg-emerald-400 hidden sm:block px-4 py-0.5 rounded-sm hover:bg-emerald-500">
                   Edit
                 </button>
-                <button className="bg-red-400 px-4 py-0.5 rounded-sm hover:bg-red-500">
+                <button className="bg-emerald-400 sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500">
+                  <AiFillEdit/>
+                </button>
+
+                <button className="bg-red-400 px-4 py-0.5 hidden sm:block rounded-sm hover:bg-red-500">
                   Delete
                 </button>
+                <button className="bg-red-400 px-4 sm:hidden py-1 rounded-sm hover:bg-red-500">
+                  <MdDeleteForever/>
+                </button>
+
               </div>
-              
+
             </div>
           );
         })}
