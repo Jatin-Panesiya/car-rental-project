@@ -7,6 +7,8 @@ date - 05/11/2023, work - work on abstract of project - pass
 date - 21/11/2023, work - work on herosection - working
 <br/>
 date - 22/11/2023, work - work on sidbar of admin panel - working
+<br/>
+date - 23/11/2023, work - work on create car module - working
 
 features -
 User Registration and Login

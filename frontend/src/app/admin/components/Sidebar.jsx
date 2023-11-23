@@ -1,18 +1,29 @@
+  "use client";
+
 import Link from "next/link";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { MdDirectionsCar } from "react-icons/md";
 import { CgMenuCheese } from "react-icons/cg";
 import { RiFeedbackFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { GrPowerShutdown } from "react-icons/gr";
+import { useSelector, useDispatch } from "react-redux";
+import { setStatus } from "@/app/redux/menuSlice";
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
+  
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-
+  const dispatch = useDispatch();
+  
+  const currentRoute = usePathname();
+  
   const handleHamburger = () => {
+    dispatch(setStatus(!isMenuOpen));
     setIsMenuOpen(!isMenuOpen);
   };
+
 
   const links = [
     {
@@ -24,28 +35,28 @@ const Sidebar = () => {
     },
     {
       id: 2,
-      linkPath: "/admin/manage-cars",
+      linkPath: "",
       icon: FaUser,
       linkName: "Manage Users",
       linkNameShort: "Users",
     },
     {
       id: 3,
-      linkPath: "/admin/manage-cars",
+      linkPath: "",
       icon: FaCartShopping,
       linkName: "Manage Orders",
       linkNameShort: "Orders",
     },
     {
       id: 4,
-      linkPath: "/admin/manage-cars",
+      linkPath: "",
       icon: RiFeedbackFill,
       linkName: "Feedbacks",
       linkNameShort: "Feeback",
     },
     {
       id: 5,
-      linkPath: "/admin/manage-cars",
+      linkPath: "",
       icon: GrPowerShutdown,
       linkName: "Logout",
       linkNameShort: "Logout",
@@ -56,7 +67,7 @@ const Sidebar = () => {
       <div className="flex pl-5  rounded  bg-slate-50">
         <CgMenuCheese
           onClick={handleHamburger}
-          className="cursor-pointer text-3xl"
+          className={`cursor-pointer text-3xl`}
         />
       </div>
 
@@ -71,13 +82,13 @@ const Sidebar = () => {
                 return (
                   <div
                     key={i}
-                    className="hover:bg-slate-300 flex items-center justify-between  px-3 rounded my-1"
+                    className={`${currentRoute === data.linkPath && 'bg-emerald-300'} hover:bg-slate-300  flex items-center justify-between  px-3 rounded my-1`}
                   >
                     <Link
                       href={data.linkPath}
                       className={`flex items-center ${
                         data.linkName === "Logout" && "text-red-500"
-                      } justify-center rounded-lg py-2 gap-2 `}
+                      } justify-center rounded-lg py-2 gap-2`}
                     >
                       <p className="text-xl font-semibold">{<data.icon />}</p>
                       <p>{data.linkName} </p>
@@ -87,8 +98,8 @@ const Sidebar = () => {
               })
             : links.map((data, i) => {
                 return (
-                  <div key={i} className="hover:bg-slate-300 rounded my-1">
-                    <div>
+                  <div key={i} className={`hover:bg-slate-300 rounded my-1 ${data.linkPath === currentRoute && 'bg-emerald-300  '}`}>
+                    
                       <Link
                         className={`text-[23px] ${
                           data.linkName === "Logout" && "text-red-500"
@@ -102,7 +113,7 @@ const Sidebar = () => {
                           {data.linkNameShort}
                         </p>
                       </Link>
-                    </div>
+                    
                   </div>
                 );
               })}
