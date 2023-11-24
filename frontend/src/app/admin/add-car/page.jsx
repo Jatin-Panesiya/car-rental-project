@@ -25,10 +25,11 @@ const page = () => {
   return (
     <div>
       <div>
-        <h1>Add Car</h1>
+        <h1 className="font-bold text-3xl p-3">Add Car</h1>
       </div>
 
-      <div className="grid mx-3 gap-3 my-1">
+      <div className="grid px-3 py-5 gap-3 my-1 bg-slate-50">
+        <p className="font-semibold">Car Details</p>
         <div className="grid grid-cols-1  md:grid-cols-3  justify-between gap-2 ">
           <span className="grid w-full gap-1">
             <label className="px-2">Make</label>

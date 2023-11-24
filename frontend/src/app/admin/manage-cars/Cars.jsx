@@ -34,7 +34,7 @@ const Cars = () => {
           return (
             <div
               key={id}
-              className={`shadow-md shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
+              className={`border shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
             >
               <img
                 src={image}
