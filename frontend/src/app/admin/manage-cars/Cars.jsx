@@ -3,7 +3,6 @@ import { MdDeleteForever } from "react-icons/md";
 
 const Cars = () => {
   const carsData = [
-    
     {
       id: 1,
       image:
@@ -25,19 +24,17 @@ const Cars = () => {
       carName: "Sport Car",
       rent: "180$",
     },
-    
   ];
 
   return (
     <>
       <p>Available Cars</p>
       <div>
-        {carsData.map(({ id, image, carName, rent,title1,title2,title3,title4 }, i) => {
+        {carsData.map(({ id, image, carName, rent }, i) => {
           return (
-            
             <div
               key={id}
-              className={`shadow-md shadow-emerald-200  flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center`}
+              className={`shadow-md shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
             >
               <img
                 src={image}
