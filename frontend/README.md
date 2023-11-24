@@ -9,6 +9,8 @@ date - 21/11/2023, work - work on herosection - working
 date - 22/11/2023, work - work on sidbar of admin panel - working
 <br/>
 date - 23/11/2023, work - work on create car module - working
+<br/>
+date - 24/11/2023, work - add car module working - working
 
 features -
 User Registration and Login
