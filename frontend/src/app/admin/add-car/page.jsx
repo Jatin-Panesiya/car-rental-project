@@ -11,7 +11,6 @@ import {
 } from "@/config";
 
 const page = () => {
-  // name price class(dropdown) mpg, cylinder(1to10), displacement(), drive(fwd dropdown), fuelType(dropdown), highwaymilage, make(cmpnay), model(), year(drop), seats
 
   const [data, setData] = useState({});
 

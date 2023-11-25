@@ -1,7 +1,42 @@
+import { carDataApi } from "@/config";
+import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 
 const Cars = () => {
+  
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      console.log(1);
+      const response = await fetch(
+        "https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io/cars",
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+          mode:"no-cors"        }
+      );
+
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  fetchData(); // Call the function directly if you want it to run once on mount
+}, []);
+
   const carsData = [
     {
       id: 1,
