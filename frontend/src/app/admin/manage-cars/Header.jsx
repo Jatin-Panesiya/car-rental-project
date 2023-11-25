@@ -7,7 +7,7 @@ const Header = () => {
       <div className="my-1">
         <input
           type="search"
-          className="input h-[2rem] input-bordered input-accent w-full max-w-4xl  rounded"
+          className="input h-[2rem] input-bordered input-accent w-full max-w-4xl dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded"
           placeholder="Search Cars"
         />
       </div>

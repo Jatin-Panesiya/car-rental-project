@@ -65,7 +65,7 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   body {
     color: white;
   }
@@ -78,4 +78,7 @@
   .active__menu__sidebar__hover:hover {
     color: black !important;
   }
-}
+  .dark__addcar {
+    background-color: #333d43;
+  }
+} */

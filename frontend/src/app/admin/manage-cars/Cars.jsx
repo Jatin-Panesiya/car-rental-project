@@ -20,9 +20,9 @@ const Cars = () => {
     fetchData();
   }, []);
 
-  useEffect(()=>{
-    console.log(data)
-  },[data,setData])
+  useEffect(() => {
+    console.log(data);
+  }, [data, setData]);
 
   const carsData = [
     {
@@ -49,10 +49,10 @@ const Cars = () => {
   ];
 
   return (
-    <>
+    <div className="text-black dark:text-white">
       <p>Available Cars</p>
       <div>
-        {data.map(({ _id : id, make: carName, model, price: rent }, i) => {
+        {data.map(({ _id: id, make: carName, price: rent }, i) => {
           return (
             <div
               key={id}
@@ -63,7 +63,7 @@ const Cars = () => {
                 alt={carName}
                 className="w-24 imageResponsive h-24 rounded-md"
               />
-              <p className="w-24 text__responsive">{carName }</p>
+              <p className="w-24 text__responsive">{carName}</p>
               <p className="rentResponsive">{rent}$</p>
 
               <div className="flex editDeleteResponsive items-center gap-2">
@@ -85,7 +85,7 @@ const Cars = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

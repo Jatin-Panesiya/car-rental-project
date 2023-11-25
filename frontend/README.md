@@ -1,4 +1,4 @@
-uu - 03/11/2023, work - packages installed , header and started making abstrct, status - pass
+date - 03/11/2023, work - packages installed , header and started making abstrct, status - pass
 <br/>
 date - 04/11/2023, work - searching for API of Cars, status - failed
 <br/>
@@ -12,7 +12,7 @@ date - 23/11/2023, work - work on create car module - working
 <br/>
 date - 24/11/2023, work - add car module working - done
 <br/>
-date - 24/11/2023, work - api fetching and sending data to api - done
+date - 25/11/2023, work - api fetching and sending data to api - done
 
 features -
 User Registration and Login

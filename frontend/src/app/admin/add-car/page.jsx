@@ -80,12 +80,16 @@ const page = () => {
   };
 
   return (
-    <form onSubmit={handleAdd} method="POST">
+    <form
+      onSubmit={handleAdd}
+      method="POST"
+      className="dark:bg-[#121212] text-black dark:text-white py-0.5"
+    >
       <div>
-        <h1 className="font-bold text-3xl px-3 pt-1">Add Car</h1>
+        <h1 className="font-bold text-3xl p-3">Add Car</h1>
       </div>
 
-      <div className="grid px-3 py-3 gap-3 my-1 bg-slate-50 mx-1 md:mx-10">
+      <div className="grid px-3 py-3 gap-3 my-1  bg-slate-100 rounded-md dark:bg-[#121212] dark:text-gray-300 mx-1 md:mx-10">
         <p className="font-semibold">Car Details</p>
         <div className="grid grid-cols-1  md:grid-cols-3  justify-between gap-2 ">
           <span className="grid w-full gap-1">
