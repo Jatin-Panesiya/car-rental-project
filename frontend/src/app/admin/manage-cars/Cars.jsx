@@ -4,38 +4,26 @@ import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 
 const Cars = () => {
-  
-const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      console.log(1);
-      const response = await fetch(
-        "https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io/cars",
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-          },
-          mode:"no-cors"        }
-      );
-
-      console.log(response);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log(1);
+        const response = await fetch(carDataApi);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    };
 
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    fetchData();
+  }, []);
 
-  fetchData(); // Call the function directly if you want it to run once on mount
-}, []);
+  useEffect(()=>{
+    console.log(data)
+  },[data,setData])
 
   const carsData = [
     {
@@ -65,19 +53,19 @@ useEffect(() => {
     <>
       <p>Available Cars</p>
       <div>
-        {carsData.map(({ id, image, carName, rent }, i) => {
+        {data.map(({ _id : id, make: carName, model, price: rent }, i) => {
           return (
             <div
               key={id}
               className={`border shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
             >
               <img
-                src={image}
+                // src={image}
                 alt={carName}
                 className="w-24 imageResponsive h-24 rounded-md"
               />
-              <p className="w-24 text__responsive">{carName}</p>
-              <p className="rentResponsive">{rent}</p>
+              <p className="w-24 text__responsive">{carName }</p>
+              <p className="rentResponsive">{rent}$</p>
 
               <div className="flex editDeleteResponsive items-center gap-2">
                 <button className="bg-transparent border border-green-500  hidden sm:block px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold">
