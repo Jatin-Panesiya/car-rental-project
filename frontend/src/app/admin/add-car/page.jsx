@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   carClassData,
+  carDataApi,
   carSeats,
   carYear,
   cylinderCount,
@@ -11,23 +12,79 @@ import {
 } from "@/config";
 
 const page = () => {
+  const defaultData = {
+    carMake: "",
+    carModel: "",
+    carRent: "",
+    carSeats: "",
+    carYear: "",
+    carClass: "",
+    carMPG: "",
+    carDisplacement: "",
+    driveType: "",
+    carFuel: "",
+    highwayMileage: "",
+    mainCarImage: "",
+    frontCarImage: "",
+    sideCarImage: "",
+    innerCarImage: "",
+  };
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState(defaultData);
 
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const handleAdd = () => {
-    console.log(data);
+
+  const isFormValid = () => {
+    for(const key in data){
+      if(data.hasOwnProperty(key) && (data[key] === "")){
+        return true
+      }
+    }return false
+    // return Object.keys(defaultData).some((key) => defaultData[key] == "");
+  };
+
+  const handleAdd = (e) => {
+    console.log(data)
+    e.preventDefault();
+
+    if (!isFormValid()) {
+      
+        const fetchData = async () => {
+          try {
+           
+            const response = await fetch(`${carDataApi}/cars`,{
+              method:'POST',
+              headers:
+              {
+                "Content-Type":'application/json'
+
+              },
+              body:JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            setData(result);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+
+        fetchData();
+      
+    } else {
+      console.log("fill all details");
+    }
   };
 
   return (
-    <div>
+    <form onSubmit={handleAdd} method="POST">
       <div>
         <h1 className="font-bold text-3xl p-3">Add Car</h1>
       </div>
 
-      <div className="grid px-3 py-5 gap-3 my-1 bg-slate-50">
+      <div className="grid px-3 py-5 gap-3 my-1 bg-slate-50 mx-1 md:mx-10">
         <p className="font-semibold">Car Details</p>
         <div className="grid grid-cols-1  md:grid-cols-3  justify-between gap-2 ">
           <span className="grid w-full gap-1">
@@ -106,6 +163,7 @@ const page = () => {
               name="carClass"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
+              value={data.carClass}
             >
               {carClassData.map((className, i) => {
                 return (
@@ -193,6 +251,7 @@ const page = () => {
               })}
             </select>
           </span>
+
           <span className="grid w-full gap-1">
             <label className="px-2">Highway Mileage</label>
             <input
@@ -206,23 +265,72 @@ const page = () => {
           </span>
         </div>
 
-        <div className="grid sm:flex text-white  sm:justify-between text-center gap-5 ">
-          <Link
-            className="w-full bg-emerald-500 py-1 rounded"
-            href={"/admin/manage-cars"}
-            onClick={handleAdd}
+        <div className="grid grid-cols-1 md:grid-cols-3  justify-between gap-2 ">
+          <span className="grid w-full gap-1">
+            <label className="px-2">Main Car Image</label>
+            <input
+              type="text"
+              placeholder="Enter Main Car Image Link"
+              className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
+              name="mainCarImage"
+              value={data.mainCarImage}
+              onChange={handleInput}
+            />
+          </span>
+          <span className="grid w-full gap-1">
+            <label className="px-2">Front Car Image</label>
+            <input
+              type="text"
+              placeholder="Enter Front Car Image Link"
+              className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
+              name="frontCarImage"
+              value={data.frontCarImage}
+              onChange={handleInput}
+            />
+          </span>
+          <span className="grid w-full gap-1">
+            <label className="px-2">Side Car Image</label>
+            <input
+              type="text"
+              placeholder="Enter Side Car Image Link"
+              className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
+              name="sideCarImage"
+              value={data.sideCarImage}
+              onChange={handleInput}
+            />
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center  justify-between gap-2 ">
+          <span className="grid w-full gap-1">
+            <label className="px-2">Inner Car Image</label>
+            <input
+              type="text"
+              placeholder="Enter Inner Car Image Link"
+              className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
+              name="innerCarImage"
+              value={data.innerCarImage}
+              onChange={handleInput}
+            />
+          </span>
+        </div>
+        <span className="md:mt-3 flex justify-between md:gap-3 md:w-60 w-full gap-1">
+          <button
+            className="w-full bg-emerald-500 py-2 rounded text-center  text-white  "
+            type="submit"
           >
             Add
-          </Link>
+          </button>
+
           <Link
-            className="w-full bg-red-500 py-1 rounded"
+            className="w-full bg-red-500 py-2 rounded text-center  text-white"
             href={"/admin/manage-cars"}
           >
             Cancle
           </Link>
-        </div>
+        </span>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -8,7 +8,7 @@ export const carClassData = [
   "Coupe",
   "Supercar",
 ];
-export const cylinderCount = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const cylinderCount = [2, 3, 4, 5, 6, 7, 8, 9, 10,11,12];
 
 export const driveTypes = [
   "front-wheel drive (FWD)",
@@ -31,4 +31,4 @@ for (let i = 1980; i <= 2023; i++) {
 }
 
 export const carYear = year;
-export const carDataApi =  "https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io/cars"
+export const carDataApi =  "https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io"

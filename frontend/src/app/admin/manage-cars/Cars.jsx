@@ -10,7 +10,7 @@ const Cars = () => {
     const fetchData = async () => {
       try {
         console.log(1);
-        const response = await fetch(carDataApi);
+        const response = await fetch(`${carDataApi}/cars`);
         const result = await response.json();
         setData(result);
       } catch (error) {
