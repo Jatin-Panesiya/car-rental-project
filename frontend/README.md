@@ -13,6 +13,8 @@ date - 23/11/2023, work - work on create car module - working
 date - 24/11/2023, work - add car module working - done
 <br/>
 date - 25/11/2023, work - api fetching and sending data to api - done
+<br/>
+date - 26/11/2023, work - dark and light mode applied - done
 
 features -
 User Registration and Login
@@ -56,7 +58,4 @@ pages -
 15. Pricing and Discounts
 16. Feedback and Surveys
 
-link for car info - https://www.car.info/en-se/bmw/x5/specs
-ui library - daisUi ~ tailwindcss prebuilt components
-for user management - clerk
-ui - https://luxedrive.qodeinteractive.com/
+i - https://luxedrive.qodeinteractive.com/
