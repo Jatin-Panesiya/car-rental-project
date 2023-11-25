@@ -11,6 +11,7 @@ import { GrPowerShutdown } from "react-icons/gr";
 import { useSelector, useDispatch } from "react-redux";
 import { setStatus } from "@/app/redux/menuSlice";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const Sidebar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(
@@ -63,18 +64,19 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="border fixed h-screen">
-      <div className="flex pl-5 py-3 rounded  bg-slate-50">
+    <div className=" fixed h-screen">
+      <div className="flex pl-5 py-3  sidebar__dark  bg-slate-50">
         <CgMenuCheese
           onClick={handleHamburger}
           className={`cursor-pointer text-3xl`}
         />
+        <button>MODE</button>
       </div>
 
       <div
         className={`sidebar ${
           isMenuOpen ? "w-[200px]" : "w-[70px]"
-        } bg-slate-50 rounded-md h-screen `}
+        } bg-slate-50 sidebar__dark  h-screen `}
       >
         <div className="menu ">
           {isMenuOpen
@@ -83,14 +85,15 @@ const Sidebar = () => {
                   <div
                     key={i}
                     className={`${
-                      currentRoute === data.linkPath && "bg-emerald-300"
-                    } hover:bg-slate-300  flex items-center justify-between  px-3 rounded my-1`}
+                      currentRoute === data.linkPath &&
+                      "bg-emerald-400 active__menu__sidebar"
+                    } hover:bg-slate-300  flex items-center justify-between active__menu__sidebar__hover   px-3 rounded my-1`}
                   >
                     <Link
                       href={data.linkPath}
                       className={`flex items-center ${
                         data.linkName === "Logout" && "text-red-500"
-                      } justify-center rounded-lg py-2 gap-2`}
+                      } justify-center rounded-lg py-2 gap-2 `}
                     >
                       <p className="text-xl font-semibold">{<data.icon />}</p>
                       <p>{data.linkName} </p>
@@ -102,8 +105,9 @@ const Sidebar = () => {
                 return (
                   <div
                     key={i}
-                    className={`hover:bg-slate-300 rounded my-1 ${
-                      data.linkPath === currentRoute && "bg-emerald-300  "
+                    className={`hover:bg-slate-300 rounded my-1 active__menu__sidebar__hover ${
+                      data.linkPath === currentRoute &&
+                      "bg-emerald-400 active__menu__sidebar  "
                     }`}
                   >
                     <Link

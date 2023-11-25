@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
+
 import {
   carClassData,
   carDataApi,
@@ -10,7 +10,7 @@ import {
   driveTypes,
   fuelTypes,
 } from "@/config";
-import { GrPowerReset } from "react-icons/gr";
+import { MdError } from "react-icons/md";
 
 const page = () => {
   const defaultData = {
@@ -32,7 +32,7 @@ const page = () => {
   };
 
   const [data, setData] = useState(defaultData);
-
+  const [error, setError] = useState(false);
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -46,11 +46,13 @@ const page = () => {
     return false;
     // return Object.keys(defaultData).some((key) => defaultData[key] == "");
   };
-   const handleReset = ()=>{
-    setData(defaultData)
-   }
+  const handleReset = (e) => {
+    e.preventDefault();
+    setError(false);
+    setData(defaultData);
+  };
+
   const handleAdd = (e) => {
-    console.log(data);
     e.preventDefault();
 
     if (!isFormValid()) {
@@ -73,17 +75,17 @@ const page = () => {
 
       fetchData();
     } else {
-      console.log("fill all details");
+      setError(true);
     }
   };
 
   return (
     <form onSubmit={handleAdd} method="POST">
       <div>
-        <h1 className="font-bold text-3xl p-3">Add Car</h1>
+        <h1 className="font-bold text-3xl px-3 pt-1">Add Car</h1>
       </div>
 
-      <div className="grid px-3 py-5 gap-3 my-1 bg-slate-50 mx-1 md:mx-10">
+      <div className="grid px-3 py-3 gap-3 my-1 bg-slate-50 mx-1 md:mx-10">
         <p className="font-semibold">Car Details</p>
         <div className="grid grid-cols-1  md:grid-cols-3  justify-between gap-2 ">
           <span className="grid w-full gap-1">
@@ -313,6 +315,13 @@ const page = () => {
             />
           </span>
         </div>
+
+        {error && (
+          <p className="text-red-500 font-semibold text-lg flex items-center gap-1">
+            <MdError className="text-xl" />
+            Please Fill Up All Details !!
+          </p>
+        )}
         <span className="md:mt-3 flex justify-between md:gap-3 md:w-60 w-full gap-1">
           <button
             className="w-full bg-emerald-500 py-2 rounded text-center  text-white  "
@@ -321,8 +330,11 @@ const page = () => {
             Add
           </button>
 
-          <button className="w-full bg-red-500 py-2 rounded text-center  text-white" onClick={handleReset}>
-          Reset
+          <button
+            className="w-full bg-red-500 py-2 rounded text-center  text-white"
+            onClick={handleReset}
+          >
+            Reset
           </button>
         </span>
       </div>

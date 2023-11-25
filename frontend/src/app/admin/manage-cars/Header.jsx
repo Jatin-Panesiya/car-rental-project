@@ -15,7 +15,7 @@ const Header = () => {
       <div className="my-3 flex justify-end">
         <Link
           href={"/admin/add-car"}
-          className="bg-emerald-300  px-5 py-1 text-center w-full text-lg font-semibold  hover:bg-emerald-400 rounded sm:mx-3"
+          className="bg-emerald-400  px-5 py-1 text-center w-full text-lg font-semibold  hover:bg-emerald-500 rounded sm:mx-3"
         >
           Add Car
         </Link>
