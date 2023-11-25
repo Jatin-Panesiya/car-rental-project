@@ -2,7 +2,6 @@ import { carDataApi } from "@/config";
 import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
-
 const Cars = () => {
   const [data, setData] = useState([]);
 

@@ -10,6 +10,7 @@ import {
   driveTypes,
   fuelTypes,
 } from "@/config";
+import { GrPowerReset } from "react-icons/gr";
 
 const page = () => {
   const defaultData = {
@@ -37,42 +38,40 @@ const page = () => {
   };
 
   const isFormValid = () => {
-    for(const key in data){
-      if(data.hasOwnProperty(key) && (data[key] === "")){
-        return true
+    for (const key in data) {
+      if (data.hasOwnProperty(key) && data[key] === "") {
+        return true;
       }
-    }return false
+    }
+    return false;
     // return Object.keys(defaultData).some((key) => defaultData[key] == "");
   };
-
+   const handleReset = ()=>{
+    setData(defaultData)
+   }
   const handleAdd = (e) => {
-    console.log(data)
+    console.log(data);
     e.preventDefault();
 
     if (!isFormValid()) {
-      
-        const fetchData = async () => {
-          try {
-           
-            const response = await fetch(`${carDataApi}/cars`,{
-              method:'POST',
-              headers:
-              {
-                "Content-Type":'application/json'
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`${carDataApi}/cars`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
 
-              },
-              body:JSON.stringify(data)
-            });
+          const result = await response.json();
+          setData(result);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
 
-            const result = await response.json();
-            setData(result);
-          } catch (error) {
-            console.error("Error fetching data:", error);
-          }
-        };
-
-        fetchData();
-      
+      fetchData();
     } else {
       console.log("fill all details");
     }
@@ -322,12 +321,9 @@ const page = () => {
             Add
           </button>
 
-          <Link
-            className="w-full bg-red-500 py-2 rounded text-center  text-white"
-            href={"/admin/manage-cars"}
-          >
-            Cancle
-          </Link>
+          <button className="w-full bg-red-500 py-2 rounded text-center  text-white" onClick={handleReset}>
+          Reset
+          </button>
         </span>
       </div>
     </form>
