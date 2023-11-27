@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../assets/styles/globals.css";
 import { Providers } from "./redux/provider";
-import { ThemeProvider } from "./theme-provider";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { ThemeProvider } from "../components/user_components/theme-provider";
+import { ThemeSwitcher } from "@/components/user_components/ThemeSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,7 +1,7 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import "./globals.css";
-import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/user_components/Footer";
+import Header from "@/components/user_components/Header";
+import "../assets/styles/globals.css";
+import HeroSection from "@/components/user_components/HeroSection";
 
 function Home() {
   return (

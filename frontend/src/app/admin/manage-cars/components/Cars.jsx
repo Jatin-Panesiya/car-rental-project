@@ -52,7 +52,7 @@ const Cars = () => {
     <div className="text-black dark:text-white">
       <p>Available Cars</p>
       <div>
-        {data.map(({ _id: id, make: carName, price: rent }, i) => {
+        {data.map(({ _id: id, make: carName, price: rent }) => {
           return (
             <div
               key={id}

@@ -1,12 +1,12 @@
-import Header from '@/components/Header'
-import React from 'react'
+import Header from "@/components/user_components/Header";
+import React from "react";
 const page = () => {
   return (
     <div>
-        <Header/>
+      <Header />
       <h1>Cars Page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

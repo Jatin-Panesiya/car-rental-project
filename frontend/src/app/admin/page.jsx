@@ -1,15 +1,14 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import Sidebar from './components/Sidebar'
+import React, { useState } from "react";
+import Sidebar from "../../components/admin_components/Sidebar";
 
 const page = () => {
-   
-    return (
-        <>
-           <Sidebar/>
-        </>
-    )
-}
+  return (
+    <>
+      <Sidebar />
+    </>
+  );
+};
 
-export default page
+export default page;
