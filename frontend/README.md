@@ -15,6 +15,8 @@ date - 24/11/2023, work - add car module working - done
 date - 25/11/2023, work - api fetching and sending data to api - done
 <br/>
 date - 26/11/2023, work - dark and light mode applied - done
+<br/>
+date - 27/11/2023, work - structured the folder structure properly - done
 
 features -
 User Registration and Login
