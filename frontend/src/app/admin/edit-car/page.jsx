@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import {
   carClassData,
   carDataApi,
@@ -11,34 +10,88 @@ import {
   fuelTypes,
 } from "@/config";
 import { MdError } from "react-icons/md";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from 'next/navigation'
+
 
 const page = () => {
-  const defaultData = {
-    carMake: "",
-    carModel: "",
-    carRent: "",
-    carSeats: 4,
-    carYear: 1980,
-    carClass: 'Classic',
-    carMPG: "",
-    carDisplacement: "",
-    driveType: 'front-wheel drive (FWD)',
-    carFuel: "Diesel",
-    highwayMileage: "",
-    carImages : [],
-    cylinders:2
-  };
-
-  const [data, setData] = useState(defaultData);
+    const router = useRouter()
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const [mount,setMount] = useState(false)
   const [error, setError] = useState(false);
+  const defaultData = {
+      carMake: "",
+      carModel: "",
+      carRent: "",
+      carSeats: "",
+      carYear: "",
+      carClass: "",
+      carMPG: "",
+      carDisplacement: "",
+      driveType: "",
+      carFuel: "",
+      highwayMileage: "",
+      carImages: [''],
+      cylinders: "",
+    };
+const [data, setData] = useState(defaultData);
+
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${carDataApi}/cars/${id}`);
+        const result = await response.json();
+        const {
+          price,
+          mpg,
+          cylinders,
+          displacement,
+          highwayMileage,
+          drive,
+          fuel_type,
+          make,
+          model,
+          year,
+          seats,
+          images,
+        } = result;
+       
+        setData({
+          carMake: make,
+          carModel: model,
+          carRent: price,
+          carSeats: seats,
+          carYear: year,
+          carClass: result.class,
+          carMPG: mpg,
+          carDisplacement: displacement,
+          driveType: drive,
+          carFuel: fuel_type,
+          highwayMileage: highwayMileage,
+          cylinders: cylinders,
+          carImages: images,
+        });
+        setMount(true)
+        
+        
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleImage = (key,value)=>{
-    data.carImages[key] = value
-      setData(data)
-  }
+  const handleImage = (key, value) => {
+    data.carImages[key] = value;
+    setData(data);
+  };
 
   const isFormValid = () => {
     for (const key in data) {
@@ -47,45 +100,44 @@ const page = () => {
       }
     }
     return false;
-    // return Object.keys(defaultData).some((key) => defaultData[key] == "");
+    
   };
   const handleReset = (e) => {
     e.preventDefault();
     setError(false);
-    setData(defaultData);
+    router.push('/admin/manage-cars')
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
 
-    if (!isFormValid()) {
       const fetchData = async () => {
         try {
-          const response = await fetch(`${carDataApi}/cars`, {
+          const response = await fetch(`${carDataApi}/cars/${id}`, {
             method: "POST",
-            
+
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
           });
-
           const result = await response.json();
-          console.log(result)
+          console.log(result);
+          
           // setData(result);
-
+          router.push('/admin/manage-cars')
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       };
 
       fetchData();
-    } else {
-      setError(true);
-    }
+    
   };
 
+  if(!mount) return <h1>Loading</h1>
   return (
+    
     <form
       onSubmit={handleAdd}
       method="POST"
@@ -200,7 +252,6 @@ const page = () => {
             />
           </span>
           <span className="grid w-full gap-1">
-           
             <label className="px-2">Cylinders</label>
             <select
               name="carCylinder"
@@ -285,7 +336,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="mainCarImage"
               value={data.carImages[0]}
-              onChange={(e)=>handleImage(0,e.target.value)}
+              onChange={(e) => handleImage(0, e.target.value)}
             />
           </span>
           <span className="grid w-full gap-1">
@@ -296,7 +347,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="frontCarImage"
               value={data.carImages[1]}
-              onChange={(e)=>handleImage(1,e.target.value)}
+              onChange={(e) => handleImage(1, e.target.value)}
             />
           </span>
           <span className="grid w-full gap-1">
@@ -307,7 +358,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="sideCarImage"
               value={data.carImages[2]}
-              onChange={(e)=>handleImage(2,e.target.value)}
+              onChange={(e) => handleImage(2, e.target.value)}
             />
           </span>
         </div>
@@ -321,7 +372,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="innerCarImage"
               value={data.carImages[3]}
-              onChange={(e)=>handleImage(3,e.target.value)}
+              onChange={(e) => handleImage(3, e.target.value)}
             />
           </span>
         </div>
@@ -337,14 +388,14 @@ const page = () => {
             className="w-full bg-emerald-500 py-2 rounded text-center  text-white  "
             type="submit"
           >
-            Add
+            Update
           </button>
 
           <button
             className="w-full bg-red-500 py-2 rounded text-center  text-white"
             onClick={handleReset}
           >
-            Reset
+            Cancle
           </button>
         </span>
       </div>

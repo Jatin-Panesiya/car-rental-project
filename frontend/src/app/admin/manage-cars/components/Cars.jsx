@@ -1,7 +1,9 @@
 import { carDataApi } from "@/config";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
+
 const Cars = () => {
   const [data, setData] = useState([]);
 
@@ -52,14 +54,14 @@ const Cars = () => {
     <div className="text-black dark:text-white">
       <p>Available Cars</p>
       <div>
-        {data.map(({ _id: id, make: carName, price: rent }) => {
+        {data.map(({ _id: id, make: carName,images, price: rent }) => {
           return (
             <div
               key={id}
               className={`border shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
             >
               <img
-                // src={image}
+                src={images[0]}
                 alt={carName}
                 className="w-24 imageResponsive h-24 rounded-md"
               />
@@ -67,9 +69,9 @@ const Cars = () => {
               <p className="rentResponsive">{rent}$</p>
 
               <div className="flex editDeleteResponsive items-center gap-2">
-                <button className="bg-transparent border border-green-500  hidden sm:block px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold">
+                <Link href={`/admin/edit-car?id=${id}`}  className="bg-transparent border border-green-500  hidden sm:block px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold">
                   Edit
-                </button>
+                </Link>
                 <button className="bg-emerald-400 edit__responsive sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500">
                   <AiFillEdit />
                 </button>
