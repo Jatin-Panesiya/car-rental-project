@@ -17,6 +17,8 @@ date - 25/11/2023, work - api fetching and sending data to api - done
 date - 26/11/2023, work - dark and light mode applied - done
 <br/>
 date - 27/11/2023, work - structured the folder structure properly - done
+<br/>
+date - 28/11/2023, work - update module working - Working
 
 features -
 User Registration and Login
