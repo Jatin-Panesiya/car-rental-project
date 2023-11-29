@@ -32,3 +32,4 @@ for (let i = 1980; i <= 2023; i++) {
 
 export const carYear = year;
 export const carDataApi =  "https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io"
+export const BACKEND_URL = 'https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io'

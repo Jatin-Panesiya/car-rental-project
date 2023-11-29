@@ -11,6 +11,7 @@ import {
   fuelTypes,
 } from "@/config";
 import { MdError } from "react-icons/md";
+import { addCar } from "@/Structure/ApiHandler";
 
 const page = () => {
   const defaultData = {
@@ -25,8 +26,8 @@ const page = () => {
     driveType: 'front-wheel drive (FWD)',
     carFuel: "Diesel",
     highwayMileage: "",
-    carImages : [],
-    cylinders:2
+    carImages: [],
+    cylinders: 2
   };
 
   const [data, setData] = useState(defaultData);
@@ -35,9 +36,9 @@ const page = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleImage = (key,value)=>{
+  const handleImage = (key, value) => {
     data.carImages[key] = value
-      setData(data)
+    setData(data)
   }
 
   const isFormValid = () => {
@@ -55,31 +56,14 @@ const page = () => {
     setData(defaultData);
   };
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
 
     if (!isFormValid()) {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`${carDataApi}/cars`, {
-            method: "POST",
-            
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
 
-          const result = await response.json();
-          console.log(result)
-          // setData(result);
+      await addCar(data);
 
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
 
-      fetchData();
     } else {
       setError(true);
     }
@@ -200,7 +184,7 @@ const page = () => {
             />
           </span>
           <span className="grid w-full gap-1">
-           
+
             <label className="px-2">Cylinders</label>
             <select
               name="carCylinder"
@@ -285,7 +269,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="mainCarImage"
               value={data.carImages[0]}
-              onChange={(e)=>handleImage(0,e.target.value)}
+              onChange={(e) => handleImage(0, e.target.value)}
             />
           </span>
           <span className="grid w-full gap-1">
@@ -296,7 +280,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="frontCarImage"
               value={data.carImages[1]}
-              onChange={(e)=>handleImage(1,e.target.value)}
+              onChange={(e) => handleImage(1, e.target.value)}
             />
           </span>
           <span className="grid w-full gap-1">
@@ -307,7 +291,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="sideCarImage"
               value={data.carImages[2]}
-              onChange={(e)=>handleImage(2,e.target.value)}
+              onChange={(e) => handleImage(2, e.target.value)}
             />
           </span>
         </div>
@@ -321,7 +305,7 @@ const page = () => {
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="innerCarImage"
               value={data.carImages[3]}
-              onChange={(e)=>handleImage(3,e.target.value)}
+              onChange={(e) => handleImage(3, e.target.value)}
             />
           </span>
         </div>
