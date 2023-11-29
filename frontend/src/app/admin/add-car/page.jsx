@@ -15,18 +15,18 @@ import { addCar } from "@/Structure/ApiHandler";
 
 const page = () => {
   const defaultData = {
-    carMake: "",
-    carModel: "",
-    carRent: "",
-    carSeats: 4,
-    carYear: 1980,
-    carClass: 'Classic',
-    carMPG: "",
-    carDisplacement: "",
-    driveType: 'front-wheel drive (FWD)',
-    carFuel: "Diesel",
-    highwayMileage: "",
-    carImages: [],
+    make: "",
+    model: "",
+    price: "",
+    seats: 4,
+    year: 1980,
+    class: 'Classic',
+    mpg: "",
+    displacement: "",
+    drive: 'front-wheel drive (FWD)',
+    fuel_type: "Diesel",
+    highwayMPG: "",
+    images: [],
     cylinders: 2
   };
 
@@ -37,7 +37,7 @@ const page = () => {
   };
 
   const handleImage = (key, value) => {
-    data.carImages[key] = value
+    data.images[key] = value
     setData(data)
   }
 
@@ -48,7 +48,7 @@ const page = () => {
       }
     }
     return false;
-    // return Object.keys(defaultData).some((key) => defaultData[key] == "");
+    
   };
   const handleReset = (e) => {
     e.preventDefault();
@@ -88,8 +88,8 @@ const page = () => {
               type="text"
               placeholder="Company of Car"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carMake"
-              value={data.carMake}
+              name="make"
+              value={data.make}
               onChange={handleInput}
             />
           </span>
@@ -99,8 +99,8 @@ const page = () => {
               type="text"
               placeholder="Model of Car"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carModel"
-              value={data.carModel}
+              name="model"
+              value={data.model}
               onChange={handleInput}
             />
           </span>
@@ -110,8 +110,8 @@ const page = () => {
               type="number"
               placeholder="Enter Rent / Hour $"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carRent"
-              value={data.carRent}
+              name="price"
+              value={data.price}
               onChange={handleInput}
             />
           </span>
@@ -121,7 +121,7 @@ const page = () => {
           <span className="grid w-full gap-1">
             <label className="px-2">Car Seats</label>
             <select
-              name="carSeats"
+              name="seats"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
             >
@@ -137,7 +137,7 @@ const page = () => {
           <span className="grid w-full gap-1">
             <label className="px-2">Make Year</label>
             <select
-              name="carYear"
+              name="year"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
               value={data.carYear}
@@ -155,7 +155,7 @@ const page = () => {
           <span className="grid w-full gap-1">
             <label className="px-2">Car Class</label>
             <select
-              name="carClass"
+              name="class"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
               value={data.carClass}
@@ -178,7 +178,7 @@ const page = () => {
               type="number"
               placeholder="Enter MPG (miles per gallon)*"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carMPG"
+              name="mpg"
               value={data.carMPG}
               onChange={handleInput}
             />
@@ -187,7 +187,7 @@ const page = () => {
 
             <label className="px-2">Cylinders</label>
             <select
-              name="carCylinder"
+              name="cylinders"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
             >
@@ -206,8 +206,8 @@ const page = () => {
               type="number"
               placeholder="Enter Displacement"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carDisplacement"
-              value={data.carDisplacement}
+              name="displacement"
+              value={data.displacement}
               onChange={handleInput}
             />
           </span>
@@ -217,7 +217,7 @@ const page = () => {
           <span className="grid w-full gap-1">
             <label className="px-2">Drive</label>
             <select
-              name="driveType"
+              name="drive"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
             >
@@ -233,7 +233,7 @@ const page = () => {
           <span className="grid w-full gap-1">
             <label className="px-2">Fuel</label>
             <select
-              name="carFuel"
+              name="fuel_type"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
             >
@@ -253,8 +253,8 @@ const page = () => {
               type="number"
               placeholder="Enter Highway Mileage"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="highwayMileage"
-              value={data.highwayMileage}
+              name="highwayMPG"
+              value={data.highwayMPG}
               onChange={handleInput}
             />
           </span>
@@ -268,7 +268,7 @@ const page = () => {
               placeholder="Enter Main Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="mainCarImage"
-              value={data.carImages[0]}
+              value={data.images[0]}
               onChange={(e) => handleImage(0, e.target.value)}
             />
           </span>
@@ -279,7 +279,7 @@ const page = () => {
               placeholder="Enter Front Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="frontCarImage"
-              value={data.carImages[1]}
+              value={data.images[1]}
               onChange={(e) => handleImage(1, e.target.value)}
             />
           </span>
@@ -290,7 +290,7 @@ const page = () => {
               placeholder="Enter Side Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="sideCarImage"
-              value={data.carImages[2]}
+              value={data.images[2]}
               onChange={(e) => handleImage(2, e.target.value)}
             />
           </span>
@@ -304,7 +304,7 @@ const page = () => {
               placeholder="Enter Inner Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="innerCarImage"
-              value={data.carImages[3]}
+              value={data.images[3]}
               onChange={(e) => handleImage(3, e.target.value)}
             />
           </span>

@@ -21,20 +21,20 @@ const page = () => {
   const [mount,setMount] = useState(false)
   const [error, setError] = useState(false);
   const defaultData = {
-      carMake: "",
-      carModel: "",
-      carRent: "",
-      carSeats: "",
-      carYear: "",
-      carClass: "",
-      carMPG: "",
-      carDisplacement: "",
-      driveType: "",
-      carFuel: "",
-      highwayMileage: "",
-      carImages: [''],
-      cylinders: "",
-    };
+    make: "",
+    model: "",
+    price: "",
+    seats: 4,
+    year: 1980,
+    class: 'Classic',
+    mpg: "",
+    displacement: "",
+    drive: 'front-wheel drive (FWD)',
+    fuel_type: "Diesel",
+    highwayMPG: "",
+    images: [],
+    cylinders: 2
+  };
 const [data, setData] = useState(defaultData);
 
 useEffect(() => {
@@ -47,7 +47,7 @@ useEffect(() => {
           mpg,
           cylinders,
           displacement,
-          highwayMileage,
+          highwayMPG,
           drive,
           fuel_type,
           make,
@@ -58,19 +58,18 @@ useEffect(() => {
         } = result;
        
         setData({
-          carMake: make,
-          carModel: model,
-          carRent: price,
-          carSeats: seats,
-          carYear: year,
-          carClass: result.class,
-          carMPG: mpg,
-          carDisplacement: displacement,
-          driveType: drive,
-          carFuel: fuel_type,
-          highwayMileage: highwayMileage,
-          cylinders: cylinders,
-          carImages: images,
+          price,
+          mpg,
+          cylinders,
+          displacement,
+          highwayMPG,
+          drive,
+          fuel_type,
+          make,
+          model,
+          year,
+          seats,
+          images,
         });
         setMount(true)
         
@@ -89,19 +88,11 @@ useEffect(() => {
   };
 
   const handleImage = (key, value) => {
-    data.carImages[key] = value;
+    data.images[key] = value;
     setData(data);
   };
 
-  const isFormValid = () => {
-    for (const key in data) {
-      if (data.hasOwnProperty(key) && data[key] === "") {
-        return true;
-      }
-    }
-    return false;
-    
-  };
+ 
   const handleReset = (e) => {
     e.preventDefault();
     setError(false);
@@ -135,7 +126,7 @@ useEffect(() => {
     
   };
 
-  if(!mount) return <h1>Loading</h1>
+  if(!mount) return <h1>Loading...</h1>
   return (
     
     <form
@@ -156,8 +147,8 @@ useEffect(() => {
               type="text"
               placeholder="Company of Car"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carMake"
-              value={data.carMake}
+              name="make"
+              value={data.make}
               onChange={handleInput}
             />
           </span>
@@ -167,8 +158,8 @@ useEffect(() => {
               type="text"
               placeholder="Model of Car"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carModel"
-              value={data.carModel}
+              name="model"
+              value={data.model}
               onChange={handleInput}
             />
           </span>
@@ -178,8 +169,8 @@ useEffect(() => {
               type="number"
               placeholder="Enter Rent / Hour $"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carRent"
-              value={data.carRent}
+              name="price"
+              value={data.price}
               onChange={handleInput}
             />
           </span>
@@ -189,9 +180,10 @@ useEffect(() => {
           <span className="grid w-full gap-1">
             <label className="px-2">Car Seats</label>
             <select
-              name="carSeats"
+              name="seats"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
+              value={data.seats}
             >
               {carSeats.map((carSeats, i) => {
                 return (
@@ -205,10 +197,10 @@ useEffect(() => {
           <span className="grid w-full gap-1">
             <label className="px-2">Make Year</label>
             <select
-              name="carYear"
+              name="year"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
-              value={data.carYear}
+              value={data.year}
             >
               {carYear.map((carYear, i) => {
                 return (
@@ -223,10 +215,10 @@ useEffect(() => {
           <span className="grid w-full gap-1">
             <label className="px-2">Car Class</label>
             <select
-              name="carClass"
+              name="class"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
-              value={data.carClass}
+              value={data.class}
             >
               {carClassData.map((className, i) => {
                 return (
@@ -246,17 +238,18 @@ useEffect(() => {
               type="number"
               placeholder="Enter MPG (miles per gallon)*"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carMPG"
-              value={data.carMPG}
+              name="mpg"
+              value={data.mpg}
               onChange={handleInput}
             />
           </span>
           <span className="grid w-full gap-1">
             <label className="px-2">Cylinders</label>
             <select
-              name="carCylinder"
+              name="cylinders"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
+              value={data.cylinders}
             >
               {cylinderCount.map((cylinderCount, i) => {
                 return (
@@ -273,8 +266,8 @@ useEffect(() => {
               type="number"
               placeholder="Enter Displacement"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="carDisplacement"
-              value={data.carDisplacement}
+              name="displacement"
+              value={data.displacement}
               onChange={handleInput}
             />
           </span>
@@ -284,9 +277,10 @@ useEffect(() => {
           <span className="grid w-full gap-1">
             <label className="px-2">Drive</label>
             <select
-              name="driveType"
+              name="drive"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
+              value={data.drive}
             >
               {driveTypes.map((driveTypes, i) => {
                 return (
@@ -300,9 +294,10 @@ useEffect(() => {
           <span className="grid w-full gap-1">
             <label className="px-2">Fuel</label>
             <select
-              name="carFuel"
+              name="fuel_type"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               onChange={handleInput}
+              value={data.fuel_type}
             >
               {fuelTypes.map((fuelTypes, i) => {
                 return (
@@ -320,8 +315,8 @@ useEffect(() => {
               type="number"
               placeholder="Enter Highway Mileage"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
-              name="highwayMileage"
-              value={data.highwayMileage}
+              name="highwayMPG"
+              value={data.highwayMPG}
               onChange={handleInput}
             />
           </span>
@@ -335,7 +330,7 @@ useEffect(() => {
               placeholder="Enter Main Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="mainCarImage"
-              value={data.carImages[0]}
+              value={data.images[0]}
               onChange={(e) => handleImage(0, e.target.value)}
             />
           </span>
@@ -346,7 +341,7 @@ useEffect(() => {
               placeholder="Enter Front Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="frontCarImage"
-              value={data.carImages[1]}
+              value={data.images[1]}
               onChange={(e) => handleImage(1, e.target.value)}
             />
           </span>
@@ -357,7 +352,7 @@ useEffect(() => {
               placeholder="Enter Side Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="sideCarImage"
-              value={data.carImages[2]}
+              value={data.images[2]}
               onChange={(e) => handleImage(2, e.target.value)}
             />
           </span>
@@ -371,7 +366,7 @@ useEffect(() => {
               placeholder="Enter Inner Car Image Link"
               className="border border-gray-400 rounded px-3 py-2  placeholder:text-sm "
               name="innerCarImage"
-              value={data.carImages[3]}
+              value={data.images[3]}
               onChange={(e) => handleImage(3, e.target.value)}
             />
           </span>
