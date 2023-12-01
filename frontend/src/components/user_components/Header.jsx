@@ -45,7 +45,7 @@ const Header = () => {
         <div className="hidden sm:flex gap-5 text-xl font-semibold">
           {headerData.map(({ linkName, linkPath }, i) => {
             return (
-              <Link key={i} className="hover:text-emerald-500 " href={linkPath}>
+              <Link key={i} className="hover:text-emerald-500 text-white " href={linkPath}>
                 {linkName}
               </Link>
             );
@@ -54,12 +54,12 @@ const Header = () => {
 
         {/* mobile menu*/}
         {isMenuOpen && (
-          <div className="grid absolute bg-slate-100 text-center text-black left-0 justify-center top-14 w-full sm:hidden gap-5  py-3 text-xl">
+          <div className="grid absolute bg-slate-100 dark:bg-[#121212]  text-center text-black left-0 justify-center top-20 w-full sm:hidden gap-5  py-3 text-xl">
             {headerData.map(({ linkName, linkPath }, i) => {
               return (
                 <Link
                   key={i}
-                  className="hover:text-emerald-500"
+                  className="hover:text-emerald-500 text-black dark:text-white "
                   href={linkPath}
                 >
                   {linkName}

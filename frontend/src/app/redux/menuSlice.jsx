@@ -10,5 +10,5 @@ export const menuStatusReducer = createSlice({
   },
 });
 
-export const { setStatus } = menuStatusReducer.actions;
+export const { setStatus } = menuStatusReducer.actions;                       
 export default menuStatusReducer.reducer;

@@ -5,7 +5,7 @@ import HeroSection from "@/components/user_components/HeroSection";
 
 function Home() {
   return (
-    <div className="poppins">
+    <div>
       <Header />
       <HeroSection />
     </div>
