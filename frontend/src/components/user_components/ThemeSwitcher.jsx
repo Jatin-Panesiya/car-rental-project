@@ -17,7 +17,6 @@ export const ThemeSwitcher = () => {
     // Update state based on the user's preference
     const userTheme = prefersDarkMode ? "dark" : "light";
     setTheme(userTheme);
-    console.log(userTheme);
   }, [window.matchMedia]);
 
   useEffect(() => {

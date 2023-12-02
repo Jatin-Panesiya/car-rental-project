@@ -1,9 +1,7 @@
 "use client";
 import React, { useState } from "react";
-
 import {
   carClassData,
-  carDataApi,
   carSeats,
   carYear,
   cylinderCount,
@@ -12,46 +10,39 @@ import {
 } from "@/config";
 import { MdError } from "react-icons/md";
 import { addCar } from "@/Structure/ApiHandler";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
+import { ValidateForm } from "@/utils/VaidateForm";
 
 const page = () => {
-  const router = useRouter()
+  const router = useRouter();
   const defaultData = {
     make: "",
     model: "",
     price: "",
     seats: 4,
     year: 1980,
-    class: 'Classic',
+    class: "Classic",
     mpg: "",
     displacement: "",
-    drive: 'front-wheel drive (FWD)',
+    drive: "front-wheel drive (FWD)",
     fuel_type: "Diesel",
     highwayMPG: "",
     images: [],
-    cylinders: 2
+    cylinders: 2,
   };
 
   const [data, setData] = useState(defaultData);
   const [error, setError] = useState(false);
+
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleImage = (key, value) => {
-    data.images[key] = value
-    setData(data)
-  }
-
-  const isFormValid = () => {
-    for (const key in data) {
-      if (data.hasOwnProperty(key) && data[key] === "") {
-        return true;
-      }
-    }
-    return false;
-    
+    data.images[key] = value;
+    setData(data);
   };
+
   const handleReset = (e) => {
     e.preventDefault();
     setError(false);
@@ -61,11 +52,9 @@ const page = () => {
   const handleAdd = async (e) => {
     e.preventDefault();
 
-    if (!isFormValid()) {
-
+    if (!ValidateForm(data)) {
       await addCar(data);
-      router.push('/admin/manage-cars')
-
+      router.push("/admin/manage-cars");
     } else {
       setError(true);
     }
@@ -186,7 +175,6 @@ const page = () => {
             />
           </span>
           <span className="grid w-full gap-1">
-
             <label className="px-2">Cylinders</label>
             <select
               name="cylinders"

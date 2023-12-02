@@ -8,9 +8,11 @@ export const carClassData = [
   "Coupe",
   "Supercar",
   "Grand Tourer",
-  "Hyper Car"
+  "Hyper Car",
 ];
-export const cylinderCount = [2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16];
+export const cylinderCount = [
+  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+];
 
 export const driveTypes = [
   "front-wheel drive (FWD)",
@@ -25,7 +27,7 @@ export const fuelTypes = [
   "Biodiesel",
   "Petroleum",
 ];
-export const carSeats = [2,3, 4, 5, 6, 7, 8, 9, 10];
+export const carSeats = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const year = [];
 for (let i = 1980; i <= 2023; i++) {
@@ -33,6 +35,4 @@ for (let i = 1980; i <= 2023; i++) {
 }
 
 export const carYear = year;
-export const carDataApi =  "https://car-api-1qh1.onrender.com"
-export const BACKEND_URL = 'https://car-api-1qh1.onrender.com'
-
+export const BACKEND_URL = "https://car-api-1qh1.onrender.com";

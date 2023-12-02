@@ -45,7 +45,11 @@ const Header = () => {
         <div className="hidden sm:flex gap-5 text-xl font-semibold">
           {headerData.map(({ linkName, linkPath }, i) => {
             return (
-              <Link key={i} className="hover:text-emerald-500 text-white " href={linkPath}>
+              <Link
+                key={i}
+                className="hover:text-white text-black font-bold text-lg "
+                href={linkPath}
+              >
                 {linkName}
               </Link>
             );

@@ -1,8 +1,6 @@
-"use client"
+"use client";
 
-import { deleteCar } from "@/Structure/ApiHandler";
-import { carDataApi } from "@/config";
-import { original } from "@reduxjs/toolkit";
+import { deleteCar, fetchData } from "@/Structure/ApiHandler";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
@@ -12,54 +10,36 @@ import { useSelector } from "react-redux";
 const Cars = () => {
   const [data, setData] = useState([]);
   const [deleteId, setDeleteId] = useState("");
-  const [mount,setMount] = useState(false)
- 
-
-  const searchQuery = useSelector((state)=>state.searchQuery)
-
-  useEffect(() => {
-    
-  }, [searchQuery]);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log(1);
-        const response = await fetch(`${carDataApi}/cars`);
-        const result = await response.json();
-        // setData(result);
-        setData(result)
-        setMount(true)
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data, setData]);
+  const [mount, setMount] = useState(false);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
 
+  const searchQuery = useSelector((state) => state.searchQuery);
+
+  useEffect(() => {}, [searchQuery]);
+
+  useEffect(() => {
+    async function fetchDataAndShowData() {
+      const result = await fetchData();
+      setData(result);
+      setMount(true);
+    }
+    fetchDataAndShowData();
+  }, []);
+
   function handleDelete(id) {
-    setDeleteId(id)
+    setDeleteId(id);
     setIsDeleteModal(true);
   }
-  async function handleModalDelete(){
-    const newData = await deleteCar(deleteId)
-    setData(newData)
-    setDeleteId(null)
-    setIsDeleteModal(false)
+  async function handleModalDelete() {
+    const newData = await deleteCar(deleteId);
+    setData(newData);
+    setDeleteId(null);
+    setIsDeleteModal(false);
   }
 
-
-  if(!mount) return <h1 className="text-black dark:text-white">Loading...</h1>
+  if (!mount) return <h1 className="text-black dark:text-white">Loading...</h1>;
   return (
     <div className="text-black dark:text-white">
-      
       {isDeleteModal && (
         <>
           <div
@@ -112,7 +92,7 @@ const Cars = () => {
                     Close
                   </button>
                   <button
-                  onClick={handleModalDelete}
+                    onClick={handleModalDelete}
                     type="button"
                     className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   >
