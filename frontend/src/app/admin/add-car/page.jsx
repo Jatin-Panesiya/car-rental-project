@@ -12,8 +12,10 @@ import {
 } from "@/config";
 import { MdError } from "react-icons/md";
 import { addCar } from "@/Structure/ApiHandler";
+import { useRouter } from 'next/navigation'
 
 const page = () => {
+  const router = useRouter()
   const defaultData = {
     make: "",
     model: "",
@@ -62,7 +64,7 @@ const page = () => {
     if (!isFormValid()) {
 
       await addCar(data);
-
+      router.push('/admin/manage-cars')
 
     } else {
       setError(true);

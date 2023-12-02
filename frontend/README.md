@@ -21,6 +21,8 @@ date - 27/11/2023, work - structured the folder structure properly - done
 date - 28/11/2023, work - update module working - Working
 <br/>
 date - 29/11/2023, work - add , edit and delete car module done - Done
+<br/>
+date - 30/11/2023, login and register page design - Done
 
 features -
 User Registration and Login
