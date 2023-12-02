@@ -66,7 +66,7 @@ export async function deleteCar(id){
     }
   };
 
-
+//register user 
   export async function registerUser(data) {
     try {
       const response = await fetch(
@@ -81,13 +81,28 @@ export async function deleteCar(id){
       );
 
       console.log(response);
-      
         const result = await response.json();
         console.log(result);
-        
-     
     } catch (error) {
       console.error("Authentication error:", error);
      
     }
   };
+
+ export async function editData(data,id){
+  try {
+    const response = await fetch(`${BACKEND_URL}/cars/${id}`, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log(result);
+    
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+ }

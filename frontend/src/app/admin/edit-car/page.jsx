@@ -12,6 +12,7 @@ import {
 import { MdError } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from 'next/navigation'
+import { editData } from "@/Structure/ApiHandler";
 
 
 const page = () => {
@@ -83,15 +84,16 @@ useEffect(() => {
   }, []);
 
   
+  console.log(data)
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleImage = (key, value) => {
-    data.images[key] = value;
-    setData(data);
+    const updatedImages = [...data.images]; // Create a copy of the images array
+    updatedImages[key] = value; // Update the specific index with the new value
+    setData({ ...data, images: updatedImages }); // Set the updated images array in state
   };
-
  
   const handleReset = (e) => {
     e.preventDefault();
@@ -101,32 +103,11 @@ useEffect(() => {
 
   const handleAdd = (e) => {
     e.preventDefault();
-
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`${carDataApi}/cars/${id}`, {
-            method: "POST",
-
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-          const result = await response.json();
-          console.log(result);
-          
-          // setData(result);
-          router.push('/admin/manage-cars')
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-
-      fetchData();
-    
+      editData(data,id)
+      router.push('/admin/manage-cars')
   };
 
-  if(!mount) return <h1>Loading...</h1>
+  if(!mount) return <h1 className="text-black dark:text-white">Loading...</h1>
   return (
     
     <form

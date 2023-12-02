@@ -1,7 +1,19 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { setSearchQuery } from "@/app/redux/searchQuery";
 
 const Header = () => {
+  const dispatch = useDispatch()
+  const [searchQueryVal,setSearchQueryVal] = useState('')
+  
+  function handleSearch(e){
+    setSearchQueryVal(e.target.value)
+    dispatch(setSearchQuery(searchQueryVal))
+  }
+  
   return (
     <div className="flex serachResponsive items-center justify-between  px-2">
       <div className="my-1">
@@ -9,6 +21,7 @@ const Header = () => {
           type="search"
           className="input h-[2rem] input-bordered input-accent w-full max-w-4xl dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded"
           placeholder="Search Cars"
+          onChange={handleSearch}
         />
       </div>
 

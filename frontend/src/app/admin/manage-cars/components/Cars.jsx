@@ -1,20 +1,36 @@
+"use client"
+
 import { deleteCar } from "@/Structure/ApiHandler";
 import { carDataApi } from "@/config";
+import { original } from "@reduxjs/toolkit";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Cars = () => {
   const [data, setData] = useState([]);
   const [deleteId, setDeleteId] = useState("");
+  const [mount,setMount] = useState(false)
+ 
+
+  const searchQuery = useSelector((state)=>state.searchQuery)
+
+  useEffect(() => {
+    
+  }, [searchQuery]);
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         console.log(1);
         const response = await fetch(`${carDataApi}/cars`);
         const result = await response.json();
-        setData(result);
+        // setData(result);
+        setData(result)
+        setMount(true)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -37,34 +53,13 @@ const Cars = () => {
     setData(newData)
     setDeleteId(null)
     setIsDeleteModal(false)
-
   }
-  const carsData = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      carName: "Mustang Gt",
-      rent: "180$",
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1620157206955-5d8ebca0df95?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      carName: "BMW",
-      rent: "180$",
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      carName: "Sport Car",
-      rent: "180$",
-    },
-  ];
 
+
+  if(!mount) return <h1 className="text-black dark:text-white">Loading...</h1>
   return (
     <div className="text-black dark:text-white">
+      
       {isDeleteModal && (
         <>
           <div
@@ -143,7 +138,7 @@ const Cars = () => {
                 alt={carName}
                 className="w-24 imageResponsive h-24 rounded-md"
               />
-              <p className="w-24 text__responsive">{carName}</p>
+              <p className="w-28 text__responsive">{carName}</p>
               <p className="rentResponsive">{rent}$</p>
 
               <div className="flex editDeleteResponsive items-center gap-2">

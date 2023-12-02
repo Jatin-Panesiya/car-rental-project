@@ -24,7 +24,7 @@ date - 29/11/2023, work - add , edit and delete car module done - Done
 <br/>
 date - 30/11/2023, login and register page design - Done
 <br/>
-date - 2/11/2023, login and register page module  - working
+date - 2/11/2023, login and register page module and search bar in car page - working
 
 features -
 User Registration and Login
