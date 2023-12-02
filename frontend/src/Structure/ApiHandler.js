@@ -44,7 +44,7 @@ export async function deleteCar(id){
  export async function authenticate(data) {
     try {
       const response = await fetch(
-        `https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io/auth/login`,
+        `https://5000-itsparasdev-carapi-qy1zu9h5d46.ws-us106.gitpod.io/auth/local/login`,
         {
           method: "POST",
           headers: {
