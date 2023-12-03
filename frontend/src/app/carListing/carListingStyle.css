@@ -1,0 +1,23 @@
+.respnosive__Cars {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.image__resp {
+  height: 250px;
+  width: 350px;
+}
+@media (max-width: 950px) {
+  .respnosive__Cars {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
+@media (max-width: 500px) {
+  .respnosive__Cars {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .image__resp {
+    min-height: auto;
+  }
+}

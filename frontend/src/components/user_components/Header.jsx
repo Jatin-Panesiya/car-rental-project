@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import logo from "@/assets/images/logo.png";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const headerData = [
@@ -13,23 +12,23 @@ const Header = () => {
     },
     {
       linkName: "Cars",
-      linkPath: "carListing",
+      linkPath: "/carListing",
     },
     {
       linkName: "Profile",
-      linkPath: "profile",
+      linkPath: "/profile",
     },
     {
       linkName: "About",
-      linkPath: "about",
+      linkPath: "/about",
     },
     {
       linkName: "Login",
-      linkPath: "login",
+      linkPath: "/login",
     },
   ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const currentRoute = usePathname();
   return (
     <div>
       <div className="flex items-center z-10 gap-5 bg-transparent  shadow-md  px-5 py-5  justify-between fixed w-full backdrop-blur-sm backdrop-brightness-100  text-black ">
@@ -42,12 +41,16 @@ const Header = () => {
 
         {/* desktop menu*/}
 
-        <div className="hidden sm:flex gap-5 text-xl font-semibold">
+        <div className="hidden sm:flex gap-2 text-xl font-semibold">
           {headerData.map(({ linkName, linkPath }, i) => {
             return (
               <Link
                 key={i}
-                className="hover:text-white text-black font-bold text-lg "
+                className={`hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${
+                  currentRoute === linkPath
+                    ? "bg-emerald-300 px-3 rounded py-1"
+                    : "bg-white bg-opacity-20 px-3 rounded py-1"
+                } `}
                 href={linkPath}
               >
                 {linkName}
@@ -63,7 +66,11 @@ const Header = () => {
               return (
                 <Link
                   key={i}
-                  className="hover:text-emerald-500 text-black dark:text-white "
+                  className={`hover:text-emerald-500 text-black dark:text-white ${
+                    currentRoute === linkPath
+                      ? "bg-emerald-300 px-3 rounded py-1"
+                      : "bg-white bg-opacity-20 px-3 rounded py-1"
+                  } `}
                   href={linkPath}
                 >
                   {linkName}
