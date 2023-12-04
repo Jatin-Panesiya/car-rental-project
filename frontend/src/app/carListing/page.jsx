@@ -15,6 +15,7 @@ const page = () => {
   useEffect(() => {
     async function dataFetch() {
       const data = await fetchData();
+      console.log(data);
       setData(data);
       setMount(true);
     }
@@ -28,7 +29,7 @@ const page = () => {
         <h1 className="text-black dark:text-white">Cars Page</h1>
 
         {!mount ? (
-          <span className="text-black py-10 dark:text-white m-3 gap-3  justify-evenly respnosive__Cars">
+          <span className="text-black py-10 dark:text-white gap-3  justify-evenly respnosive__Cars">
             <CarSkeleton />
             <CarSkeleton />
             <CarSkeleton />
