@@ -24,6 +24,16 @@ const page = () => {
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
     setIsValidEmail(validateEmail(data.email));
+
+    if (validatePassword(data.password)) {
+      setIsError(false);
+      setError("");
+    } else {
+      setIsError(true);
+      setError(
+        "Minimum 8 characters, at least 1 letter and 1 number Required"
+      );
+    }
   }
 
   async function handleSubmit(e) {

@@ -8,16 +8,16 @@ export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    // Check if the user prefers dark mode
-    const prefersDarkMode =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // useEffect(() => {
+  //   // Check if the user prefers dark mode
+  //   const prefersDarkMode =
+  //     window.matchMedia &&
+  //     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    // Update state based on the user's preference
-    const userTheme = prefersDarkMode ? "dark" : "light";
-    setTheme(userTheme);
-  }, [window.matchMedia]);
+  //   // Update state based on the user's preference
+  //   const userTheme = prefersDarkMode ? "dark" : "light";
+  //   setTheme(userTheme);
+  // }, [window.matchMedia]);
 
   useEffect(() => {
     setMounted(true);

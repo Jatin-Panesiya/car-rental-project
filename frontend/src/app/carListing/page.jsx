@@ -4,9 +4,15 @@ import { fetchData } from "@/Structure/ApiHandler";
 import Header from "@/components/user_components/Header";
 import React, { useEffect, useState } from "react";
 import "./carListingStyle.css";
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import CarSkeleton from "@/components/user_components/CarSkeleton";
+
 const page = () => {
   const [data, setData] = useState([]);
   const [mount, setMount] = useState(false);
+  
   useEffect(() => {
     async function dataFetch() {
       const data = await fetchData();
@@ -23,7 +29,18 @@ const page = () => {
         <h1 className="text-black dark:text-white">Cars Page</h1>
 
         {!mount ? (
-          <p className="text-black dark:text-white"> Loading...</p>
+          <span className="text-black dark:text-white m-3 gap-3  justify-evenly respnosive__Cars">
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            <CarSkeleton/>
+            </span>
+
         ) : (
           <div className="respnosive__Cars justify-center md:justify-evenly gap-3 transition-all duration-300 p-3">
             {data.map((data, key) => {
