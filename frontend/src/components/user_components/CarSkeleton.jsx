@@ -1,17 +1,19 @@
-import React from 'react'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import React from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 const CarSkeleton = () => {
-  return( 
+  return (
     <>
+      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <div className="grid gap-1">
+          <Skeleton width={340} height={200} />
 
-    <div className='grid gap-1'>
-  <Skeleton width={360} baseColor="#202020" highlightColor="#444" height={200} />
-  <Skeleton width={360} baseColor="#202020" highlightColor="#444"   height={35} />
-  </div>
-  </>
-  )
-  
-}
+          <Skeleton width={340} height={25} />
+          <Skeleton width={340} height={40} />
+        </div>
+      </SkeletonTheme>
+    </>
+  );
+};
 
-export default CarSkeleton
+export default CarSkeleton;

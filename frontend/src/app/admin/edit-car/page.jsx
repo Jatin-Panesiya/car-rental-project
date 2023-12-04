@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import {
+  BACKEND_URL,
   carClassData,
   carDataApi,
   carSeats,
@@ -11,15 +12,14 @@ import {
 } from "@/config";
 import { MdError } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { editData } from "@/Structure/ApiHandler";
 
-
 const page = () => {
-    const router = useRouter()
+  const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  const [mount,setMount] = useState(false)
+  const [mount, setMount] = useState(false);
   const [error, setError] = useState(false);
   const defaultData = {
     make: "",
@@ -27,21 +27,21 @@ const page = () => {
     price: "",
     seats: 4,
     year: 1980,
-    class: 'Classic',
+    class: "Classic",
     mpg: "",
     displacement: "",
-    drive: 'front-wheel drive (FWD)',
+    drive: "front-wheel drive (FWD)",
     fuel_type: "Diesel",
     highwayMPG: "",
     images: [],
-    cylinders: 2
+    cylinders: 2,
   };
-const [data, setData] = useState(defaultData);
+  const [data, setData] = useState(defaultData);
 
-useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${carDataApi}/cars/${id}`);
+        const response = await fetch(`${BACKEND_URL}/cars/${id}`);
         const result = await response.json();
         const {
           price,
@@ -57,7 +57,7 @@ useEffect(() => {
           seats,
           images,
         } = result;
-       
+
         setData({
           price,
           mpg,
@@ -72,9 +72,7 @@ useEffect(() => {
           seats,
           images,
         });
-        setMount(true)
-        
-        
+        setMount(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -83,8 +81,7 @@ useEffect(() => {
     fetchData();
   }, []);
 
-  
-  console.log(data)
+  console.log(data);
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -94,22 +91,21 @@ useEffect(() => {
     updatedImages[key] = value; // Update the specific index with the new value
     setData({ ...data, images: updatedImages }); // Set the updated images array in state
   };
- 
+
   const handleReset = (e) => {
     e.preventDefault();
     setError(false);
-    router.push('/admin/manage-cars')
+    router.push("/admin/manage-cars");
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-      editData(data,id)
-      router.push('/admin/manage-cars')
+    editData(data, id);
+    router.push("/admin/manage-cars");
   };
 
-  if(!mount) return <h1 className="text-black dark:text-white">Loading...</h1>
+  if (!mount) return <h1 className="text-black dark:text-white">Loading...</h1>;
   return (
-    
     <form
       onSubmit={handleAdd}
       method="POST"
