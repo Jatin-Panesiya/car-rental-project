@@ -107,3 +107,23 @@ export async function editData(data, id) {
     console.error("Error fetching data:", error);
   }
 }
+
+//getuser
+
+export async function getUser(){
+  try {
+    const response = await fetch(`${BACKEND_URL}/auth/@me`, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials:'include',
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}

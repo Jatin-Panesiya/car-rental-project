@@ -38,7 +38,7 @@ const page = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+      console.log('form')
     if (!ValidateForm(data) && isBothPasswordMatch && isValidEmail) {
       if (validatePassword(data.password)) {
         await registerUser(data);
@@ -70,7 +70,7 @@ const page = () => {
 
   function handleGoogle() {
     console.log("google");
-    window.open(`${BACKEND_URL}/auth/google`, "_self");
+    window.open(`${BACKEND_URL}/auth/google`,"_self");
   }
 
   return (
@@ -123,7 +123,7 @@ const page = () => {
                   onChange={(e) => setPassword2(e.target.value)}
                 />
                 {isError && (
-                  <p className="text-red-500 font-bold text-lg">{error}</p>
+                  <p className="text-red-500 ">{error}</p>
                 )}
                 <button
                   type="submit"
@@ -133,7 +133,8 @@ const page = () => {
                 </button>
 
                 <div className="grid gap-2">
-                  <button
+                  <button 
+                  type="button"
                     onClick={handleGoogle}
                     className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300"
                   >

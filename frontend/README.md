@@ -27,6 +27,8 @@ date - 30/11/2023, login and register page design - Done
 date - 2/11/2023, login and register page module and search bar in car page - working
 <br/>
 date - 3/11/2023, car listing page responsive - working
+<br/>
+date - 4/11/2023, google login - Done
 
 features -
 User Registration and Login

@@ -6,15 +6,15 @@ import React, { useState } from "react";
 import "./style.css";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-import { authenticate } from "@/Structure/ApiHandler";
+import { authenticate, getUser } from "@/Structure/ApiHandler";
 import { ValidateForm } from "@/utils/VaidateForm";
-
+import { useRouter } from "next/navigation";
 const page = () => {
   const defualtData = { email: "", password: "" };
   const [data, setData] = useState(defualtData);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
-
+  const router = useRouter();
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
   }
@@ -24,6 +24,10 @@ const page = () => {
       setIsError(false);
       setError("");
       await authenticate(data);
+      const user = await getUser()
+      console.log(user)
+      // router.push("/admin/manage-cars");
+
     } else {
       setIsError(true);
       setError("Fill up all details");

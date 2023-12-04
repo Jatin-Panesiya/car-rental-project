@@ -8,11 +8,12 @@ import "./carListingStyle.css";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import CarSkeleton from "@/components/user_components/CarSkeleton";
+import { FaPlus } from "react-icons/fa";
 
 const page = () => {
   const [data, setData] = useState([]);
   const [mount, setMount] = useState(false);
-  
+
   useEffect(() => {
     async function dataFetch() {
       const data = await fetchData();
@@ -45,15 +46,16 @@ const page = () => {
           <div className="respnosive__Cars justify-center md:justify-evenly gap-3 transition-all duration-300 p-3">
             {data.map((data, key) => {
               return (
-                <div key={key} className="border dark:border-white rounded-md">
+                <div key={key} className=" rounded-md">
                   <img
                     src={data.images[0]}
                     alt={data.make}
                     className="w-full rounded-md image__resp"
                     loading="lazy"
                   />
-                  <button className="text-center w-full py-1 bg-emerald-400  mt-2 rounded-md text-lg font-semibold hover:bg-emerald-600 ">
-                    Book Now
+                  <p className="text-black dark:text-white text-xl font-mono text-center py-1.5">{data.make + " " + data.model}</p>
+                  <button className="text-center w-full py-3  bg-transparent  mt-2 rounded-md text-lg font-semibold border border-emerald-400 flex items-center justify-center gap-2 text-black dark:text-white hover:transition-all hover:bg-emerald-300 duration-300 hover:text-black  ">
+                    <FaPlus/> <p> Book Now</p>
                   </button>
                 </div>
               );

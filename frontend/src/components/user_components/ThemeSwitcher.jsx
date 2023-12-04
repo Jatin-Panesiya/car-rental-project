@@ -19,6 +19,10 @@ export const ThemeSwitcher = () => {
   //   setTheme(userTheme);
   // }, [window.matchMedia]);
 
+  useEffect(()=>{ 
+    setTheme('dark')
+  },[])
+  
   useEffect(() => {
     setMounted(true);
   }, []);
