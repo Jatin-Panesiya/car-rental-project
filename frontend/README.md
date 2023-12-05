@@ -29,6 +29,8 @@ date - 2/11/2023, login and register page module and search bar in car page - wo
 date - 3/11/2023, car listing page responsive - working
 <br/>
 date - 4/11/2023, google login - Done
+<br/>
+date - 5/11/2023, get user info module  - working
 
 features -
 User Registration and Login
@@ -55,10 +57,9 @@ Vehicle Inventory Management
 
 pages -
 
-1. Login
+1. Login 
 2. Register
 3. User Profile
-4. Document Upload
 5. Car Listings
 6. Car Detail
 7. Reservation

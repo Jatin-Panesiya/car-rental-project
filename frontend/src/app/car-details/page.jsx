@@ -63,17 +63,17 @@ const page = () => {
               <p className={carDetailsClass}>Cylinders {cylinders} </p>
               <p className={carDetailsClass}>Displacement {displacement} </p>
             </div>
-            <div>
-              <p className="text-xl">Prices</p>
+            <div className="pt-10">
+              <p className="text-2xl py-3">Prices</p>
               <span className="flex items-center">
                 <p>$</p>
                 <p className="text-4xl px-1">{price} </p> / Hour
               </span>
-              <span className="flex items-center">
+              <span className="flex items-center py-5">
                 <p>$</p>
                 <p className="text-4xl px-1">{dayPrice} </p> / Day
               </span>
-              <button className="px-10 py-2.5 text-lg border border-emerald-500 ">
+              <button className="px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 ">
                 + Book {make + " " + model}
               </button>
             </div>

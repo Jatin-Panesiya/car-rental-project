@@ -113,13 +113,12 @@ export async function editData(data, id) {
 export async function getUser(){
   try {
     const response = await fetch(`${BACKEND_URL}/auth/@me`, {
-      method: "POST",
+      method: "GET",
 
       headers: {
         "Content-Type": "application/json",
       },
       credentials:'include',
-      body: JSON.stringify(data),
     });
     const result = await response.json();
     console.log(result);
