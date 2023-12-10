@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchData } from "@/Structure/ApiHandler";
+import CarReviews from "@/components/user_components/CarReviews";
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -21,7 +22,7 @@ const page = () => {
     }
     dataFetch();
   }, []);
-
+   const reviews = ['Nice Car','Very Good Experience']
   const {
     cylinders,
     displacement,
@@ -38,11 +39,12 @@ const page = () => {
   } = data;
   const dayPrice = price + 50;
   return (
-    <div className="text-black dark:text-white min-h-screen">
+    <div className="text-black dark:text-white py-20 min-h-screen">
       {mount ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex gap-2 justify-evenly">
+        <div>
+        <div className="flex gap-2 justify-around">
           <div className="grid gap-2 w-[700px]">
             <img src={images[0]} alt={make} className="w-[700px]" />
             <div className="flex gap-2 w-[700px]">
@@ -78,6 +80,22 @@ const page = () => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="pl-[88px]">
+          <p className="text-4xl  py-5">Reviews</p>
+          {
+            reviews.map((review,i)=>{
+              return(
+                <div key={i}>
+                   <span className="flex items-center gap-2 text-lg "><p>{i+1}.</p> <p className="text-emerald-500 font-semibold">{review}</p></span>
+                </div>
+              )
+            })
+          }
+          <div className="py-10">
+            <CarReviews/>
+          </div>
+        </div>
         </div>
       )}
     </div>

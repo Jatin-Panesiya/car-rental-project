@@ -79,7 +79,7 @@ const page = () => {
 
       <div className=" background__image hieght__resp">
         <form method="POST" onSubmit={(e) => handleSubmit(e)}>
-          <div className="bg-[#00000085] hieght__resp text-white  pt-24 pb-[40.5px]">
+          <div className="bg-[#00000085] hieght__resp min-h-screen text-white  pt-24 pb-[40.5px]">
             <div className="bg-[#000000ba] rounded-md w-full md:w-96 mx-auto py-5 px-3 md:px-10">
               <h1 className="text-3xl font-semibold py-5">Register</h1>
 
