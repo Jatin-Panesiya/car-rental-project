@@ -31,6 +31,8 @@ date - 3/11/2023, car listing page responsive - working
 date - 4/11/2023, google login - Done
 <br/>
 date - 5/11/2023, get user info module  - working
+<br/>
+date - 10/11/2023, loading added for asynchronous tasks - working
 
 features -
 User Registration and Login
