@@ -64,7 +64,7 @@ const page = () => {
     <form
       onSubmit={handleAdd}
       method="POST"
-      className="dark:bg-[#121212] text-black dark:text-white py-0.5"
+      className="dark:bg-[#121212] text-black dark:text-white py-0.5 min-h-screen"
     >
       <div>
         <h1 className="font-bold text-3xl p-3">Add Car</h1>

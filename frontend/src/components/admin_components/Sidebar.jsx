@@ -56,7 +56,7 @@ const Sidebar = () => {
     },
     {
       id: 5,
-      linkPath: "",
+      linkPath: "/",
       icon: GrPowerShutdown,
       linkName: "Logout",
       linkNameShort: "Logout",

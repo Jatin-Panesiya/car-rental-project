@@ -14,6 +14,7 @@ import { MdError } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { editData } from "@/Structure/ApiHandler";
+import Loading from "@/components/user_components/Loading";
 
 const page = () => {
   const router = useRouter();
@@ -104,12 +105,12 @@ const page = () => {
     router.push("/admin/manage-cars");
   };
 
-  if (!mount) return <h1 className="text-black dark:text-white">Loading...</h1>;
+  if (!mount) return <Loading/>;
   return (
     <form
       onSubmit={handleAdd}
       method="POST"
-      className="dark:bg-[#121212] text-black dark:text-white py-0.5"
+      className="dark:bg-[#121212] text-black dark:text-white py-0.5 min-h-screen"
     >
       <div>
         <h1 className="font-bold text-3xl p-3">Add Car</h1>

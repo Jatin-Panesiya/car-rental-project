@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchData } from "@/Structure/ApiHandler";
 import CarReviews from "@/components/user_components/CarReviews";
+import Loading from "@/components/user_components/Loading";
 
 const page = () => {
   const searchParams = useSearchParams();
@@ -39,11 +40,11 @@ const page = () => {
   } = data;
   const dayPrice = price + 50;
   return (
-    <div className="text-black dark:text-white py-20 min-h-screen">
+    <div className="text-black dark:text-white  min-h-screen">
       {mount ? (
-        <p>Loading...</p>
+        <Loading/>
       ) : (
-        <div>
+        <div className="py-20">
         <div className="flex gap-2 justify-around">
           <div className="grid gap-2 w-[700px]">
             <img src={images[0]} alt={make} className="w-[700px]" />

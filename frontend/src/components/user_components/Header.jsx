@@ -15,12 +15,13 @@ const Header = () => {
       linkPath: "/carListing",
     },
     {
-      linkName: "Profile",
-      linkPath: "/profile",
-    },
-    {
       linkName: "About",
       linkPath: "/about",
+    },
+    ,
+    {
+      linkName: "Contact",
+      linkPath: "/contact-us",
     },
     {
       linkName: "Login",

@@ -2,16 +2,16 @@ import React from 'react'
 
 const CarReviews = () => {
     return (
-        <div className='w-[500px]'>
+        <div className='w-[600px]'>
 
             <div>
-                <p>Leave a Review</p>
-                <p>Your email address will not be published. Required fields are marked *</p>
+                <p className='text-4xl py-4'>Leave a Review</p>
+                <p className='text-lg pb-3 text-gray-500'>Your email address will not be published. Required fields are marked *</p>
             </div>
             <form>
                 <span className='grid gap-2'>
                     <label className='text-lg font-semibold'>Review *</label>
-                    <textarea cols="30" rows="5" placeholder='Your Review *' className='border  px-3 py-1 placeholder:text-black placeholder:dark:text-white'></textarea>
+                    <textarea cols="30" rows="5" placeholder='Your Review *' className='border  px-3 py-1 placeholder:text-black placeholder:dark:text-white resize-none'></textarea>
                 </span>
                 <div className='flex py-10 justify-between w-[500px] gap-3'>
                     
@@ -22,7 +22,7 @@ const CarReviews = () => {
                     
                 </div>
 
-                    <button className='px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 '>Post Review</button>
+                    <button className='px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 '> + Post Review</button>
             </form>
         </div>
     )

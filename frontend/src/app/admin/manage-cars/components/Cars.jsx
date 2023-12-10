@@ -1,6 +1,7 @@
 "use client";
 
 import { deleteCar, fetchData } from "@/Structure/ApiHandler";
+import Loading from "@/components/user_components/Loading";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
@@ -37,7 +38,7 @@ const Cars = () => {
     setIsDeleteModal(false);
   }
 
-  if (!mount) return <h1 className="text-black dark:text-white">Loading...</h1>;
+  if (!mount) return <Loading/>;
   return (
     <div className="text-black dark:text-white">
       {isDeleteModal && (

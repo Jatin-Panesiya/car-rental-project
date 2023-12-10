@@ -26,7 +26,7 @@ const page = () => {
     <div>
       <Header />
       <div className="pt-24">
-        <h1 className="text-black dark:text-white">Cars Page</h1>
+        <h1 className="text-black dark:text-white text-4xl md:px-10 px-2">Browse Luxury Cars</h1>
 
         {!mount ? (
           <span className="text-black py-10 dark:text-white gap-3  justify-evenly respnosive__Cars">
