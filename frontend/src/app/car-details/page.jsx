@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { fetchData } from "@/Structure/ApiHandler";
 import CarReviews from "@/components/user_components/CarReviews";
 import Loading from "@/components/user_components/Loading";
-
+import './style.css'
 const page = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
@@ -45,7 +45,7 @@ const page = () => {
         <Loading/>
       ) : (
         <div className="py-20">
-        <div className="flex gap-2 justify-around">
+        <div className="responsive__carDetails gap-2 justify-around ">
           <div className="grid gap-2 w-[700px]">
             <img src={images[0]} alt={make} className="w-[700px]" />
             <div className="flex gap-2 w-[700px]">
