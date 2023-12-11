@@ -24,15 +24,17 @@ date - 29/11/2023, work - add , edit and delete car module done - Done
 <br/>
 date - 30/11/2023, login and register page design - Done
 <br/>
-date - 2/11/2023, login and register page module and search bar in car page - working
+date - 2/12/2023, login and register page module and search bar in car page - working
 <br/>
-date - 3/11/2023, car listing page responsive - working
+date - 3/12/2023, car listing page responsive - working
 <br/>
-date - 4/11/2023, google login - Done
+date - 4/12/2023, google login - Done
 <br/>
-date - 5/11/2023, get user info module  - working
+date - 5/12/2023, get user info module  - working
 <br/>
-date - 10/11/2023, loading added for asynchronous tasks - working
+date - 10/12/2023, loading added for asynchronous tasks - done
+<br/>
+date - 11/12/2023, about page design - working
 
 features -
 User Registration and Login

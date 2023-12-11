@@ -19,7 +19,7 @@ const Header = () => {
       <div className="my-1">
         <input
           type="search"
-          className="input h-[2rem] input-bordered input-accent w-full max-w-4xl dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded"
+          className="input h-[2rem] input-bordered input-accent w-full max-w-4xl bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded"
           placeholder="Search Cars"
           onChange={handleSearch}
         />
@@ -28,7 +28,7 @@ const Header = () => {
       <div className="my-3 flex justify-end">
         <Link
           href={"/admin/add-car"}
-          className="bg-emerald-400  px-5 py-1 text-center w-full text-lg font-semibold  hover:bg-emerald-500 rounded sm:mx-3"
+          className="bg-emerald-400  px-5 py-1 text-center w-full text-lg font-semibold text-black dark:text-white hover:bg-emerald-500 rounded sm:mx-3"
         >
           Add Car
         </Link>
