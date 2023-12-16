@@ -15,6 +15,7 @@ const page = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
   }
@@ -26,7 +27,6 @@ const page = () => {
       await authenticate(data);
       const user = await getUser()
       console.log(user)
-      // router.push("/admin/manage-cars");
 
     } else {
       setIsError(true);

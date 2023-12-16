@@ -1,8 +1,21 @@
+'use client'
+
 import Header from '@/components/user_components/Header'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaPhoneVolume, FaLocationDot, FaXTwitter, FaSquareInstagram, FaDiscord } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+
 const page = () => {
+  const defaultData= {firstName:"",email:"",phone:'',lastName:'',message:''}
+  const [data,setData] = useState(defaultData)
+
+  function handleSubmit(e){
+    e.preventDefault()
+  }
+  function handleInput(e){
+    setData({...data,[e.target.name]:e.target.value})
+  }
+
   return (
     <div className='min-h-screen text-black dark:text-white'>
       <Header />
@@ -33,19 +46,19 @@ const page = () => {
             </div>
           </div>
 
-          <div > 
+          <form onSubmit={handleSubmit} > 
               <div className='grid sm:grid-cols-2 gap-3 py-5'>
-                <input type="text" className='border-b bg-transparent border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='First Name' />
-                <input type="text" className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Last Name' />
-                <input type="email" className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Email' />
-                <input type="text" className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Phone Number' />
+                <input type="text" name='firstName' onChange={handleInput} className='border-b bg-transparent border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='First Name' />
+                <input type="text" name='lastName' onChange={handleInput} className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Last Name' />
+                <input type="email" name='email' onChange={handleInput} className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Email' />
+                <input type="text" name='phone' onChange={handleInput} maxLength={10} className='border-b bg-transparent  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 outline-none px-3 py-1' placeholder='Phone Number' />
               </div>
               <div className='grid'>
                 <label htmlFor="message">Message</label>
-                <textarea className='border-b bg-transparent outline-none  px-3 py-1  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 resize-none'  id="message" cols="30" rows="5" placeholder='Write your message' ></textarea>
+                <textarea className='border-b bg-transparent outline-none  px-3 py-1  border-black dark:border-gray-500 placeholder:text-black dark:placeholder:text-gray-500 resize-none' onChange={handleInput}  name='message' id="message" cols="30" rows="5" placeholder='Write your message' ></textarea>
               </div>
               <button className='bg-emerald-400 px-5 py-2 rounded hover:scale-105 transition-all duration-150 text-black font-semibold my-5'>Send Message</button>
-          </div>
+          </form>
         </div>
 
 

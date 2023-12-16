@@ -27,6 +27,10 @@ const Header = () => {
       linkName: "Login",
       linkPath: "/login",
     },
+    {
+      linkName: "Admin",
+      linkPath: "/admin",
+    },
   ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentRoute = usePathname();

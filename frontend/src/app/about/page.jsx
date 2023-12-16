@@ -11,7 +11,7 @@ const page = () => {
           <p className="md:mx-10 mx-2">Them To Have A Nice Experience</p>
         </span>
 
-          <p className="md:mx-10 my-7 mx-2 "><hr/></p>
+         <hr className="md:mx-10 my-7 mx-2 "/>
 
           <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-[800px] m-auto md:px-10 px-2 gap-5">
 

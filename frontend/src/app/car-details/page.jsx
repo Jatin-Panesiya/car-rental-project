@@ -19,7 +19,6 @@ const page = () => {
       const finalData = arrdata.find((data) => data._id === id);
       setData(finalData);
       setMount(false);
-      console.log(finalData);
     }
     dataFetch();
   }, []);
@@ -68,8 +67,9 @@ const page = () => {
               <p className={carDetailsClass}>Cylinders {cylinders} </p>
               <p className={carDetailsClass}>Displacement {displacement} </p>
             </div>
-            <div className="pt-10">
-              <p className="text-2xl py-3">Prices</p>
+            <div className="pt-10 px-5">
+              <p className="text-3xl py-3">Prices</p>
+
               <span className="flex items-center">
                 <p>$</p>
                 <p className="text-4xl px-1">{price} </p> / Hour
@@ -78,13 +78,14 @@ const page = () => {
                 <p>$</p>
                 <p className="text-4xl px-1">{dayPrice} </p> / Day
               </span>
+              
               <button className="px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 ">
                 + Book {make + " " + model}
               </button>
             </div>
           </div>
         </div>
-        <div className="px-2 md:pl-[88px]">
+        <div className="px-5 md:pl-[88px]">
           <p className="text-4xl  py-5">Reviews</p>
           {
             reviews.map((review,i)=>{

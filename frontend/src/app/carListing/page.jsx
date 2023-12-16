@@ -15,7 +15,6 @@ const page = () => {
   useEffect(() => {
     async function dataFetch() {
       const data = await fetchData();
-      console.log(data);
       setData(data);
       setMount(true);
     }

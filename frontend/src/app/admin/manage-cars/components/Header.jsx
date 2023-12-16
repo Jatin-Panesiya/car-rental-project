@@ -7,11 +7,9 @@ import { setSearchQuery } from "@/app/redux/searchQuery";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const [searchQueryVal, setSearchQueryVal] = useState("");
 
   function handleSearch(e) {
-    setSearchQueryVal(e.target.value);
-    dispatch(setSearchQuery(searchQueryVal));
+    dispatch(setSearchQuery(e.target.value));
   }
 
   return (
