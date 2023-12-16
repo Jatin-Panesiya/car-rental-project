@@ -35,6 +35,9 @@ date - 5/12/2023, get user info module  - working
 date - 10/12/2023, loading added for asynchronous tasks - done
 <br/>
 date - 11/12/2023, about page design - working
+<br/>
+date - 16/12/2023, contact page and about page design - Done
+
 
 features -
 User Registration and Login

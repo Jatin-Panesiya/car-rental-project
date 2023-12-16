@@ -2,7 +2,7 @@ import React from 'react'
 
 const CarReviews = () => {
     return (
-        <div className='w-[600px]'>
+        <div className='w-full md:w-[600px]'>
 
             <div>
                 <p className='text-4xl py-4'>Leave a Review</p>
@@ -13,7 +13,7 @@ const CarReviews = () => {
                     <label className='text-lg font-semibold'>Review *</label>
                     <textarea cols="30" rows="5" placeholder='Your Review *' className='border  px-3 py-1 placeholder:text-black placeholder:dark:text-white resize-none'></textarea>
                 </span>
-                <div className='flex py-10 justify-between w-[500px] gap-3'>
+                <div className='flex py-10 justify-between w-full md:w-[500px] gap-3'>
                     
                         <input type='text' placeholder='Name *' className='border-b  px-3 py-1  w-full placeholder:text-black placeholder:dark:text-white' />
                     

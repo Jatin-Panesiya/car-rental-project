@@ -144,7 +144,7 @@ const page = () => {
                     <p>Continue with Google</p>
                   </button>
 
-                  <button className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 ">
+                  <button type="button" className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 ">
                     <p className="text-blue-500">
                       <FaFacebookF />
                     </p>

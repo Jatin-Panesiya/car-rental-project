@@ -46,17 +46,19 @@ const page = () => {
       ) : (
         <div className="py-20">
         <div className="responsive__carDetails gap-2 justify-around ">
-          <div className="grid gap-2 w-[700px]">
-            <img src={images[0]} alt={make} className="w-[700px]" />
-            <div className="flex gap-2 w-[700px]">
-              <img src={images[1]} alt={make} className="w-[228px]" />
-              <img src={images[2]} alt={make} className="w-[228px]" />
-              <img src={images[3]} alt={make} className="w-[228px]" />
+          <div className="grid gap-2 w-full md:w-[700px] ">
+          <p className="text-3xl py-5 text-center md:hidden">{make + " " + model}</p>
+
+            <img src={images[0]} alt={make} className=" w-full md:w-[700px]" />
+            <div className="grid md:flex gap-2 w-full md:w-[700px]">
+              <img src={images[1]} alt={make} className="w-full  md:w-[228px]" />
+              <img src={images[2]} alt={make} className="w-full  md:w-[228px]" />
+              <img src={images[3]} alt={make} className="w-full  md:w-[228px]" />
             </div>
           </div>
           <div>
-            <p className="text-3xl py-5">{make + " " + model}</p>
-            <div className="grid grid-cols-2 gap-5">
+            <p className="text-3xl py-5 text-center">{make + " " + model}</p>
+            <div className="grid mx-2 grid-cols-2 gap-5">
               <p className={carDetailsClass}>{seats} Persons</p>
               <p className={carDetailsClass}>{year} Model</p>
               <p className={carDetailsClass}>{fuel_type}</p>
@@ -82,7 +84,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="pl-[88px]">
+        <div className="px-2 md:pl-[88px]">
           <p className="text-4xl  py-5">Reviews</p>
           {
             reviews.map((review,i)=>{
