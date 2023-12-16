@@ -12,7 +12,7 @@ export async function fetchData() {
 }
 // api handling for add car
 export async function addCar(data) {
-  console.log(data);
+  
   const response = await fetch(`${BACKEND_URL}/cars`, {
     method: "POST",
 

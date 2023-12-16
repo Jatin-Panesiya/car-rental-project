@@ -10,23 +10,34 @@ import { FaPlus } from "react-icons/fa";
 import Link from "next/link";
 const page = () => {
   const [data, setData] = useState([]);
+  const [searchedData,setSearchedData] = useState([])
   const [mount, setMount] = useState(false);
+  const [searchQuery,setSearchQuery] = useState('')
 
   useEffect(() => {
     async function dataFetch() {
       const data = await fetchData();
       setData(data);
+      setSearchedData(data)
       setMount(true);
     }
     dataFetch();
   }, []);
 
+  useEffect(()=>{
+      const filteredData = data.filter((data)=>{
+        const make = data.make.toLowerCase()
+        return make.startsWith(searchQuery.toLowerCase())
+      })
+      setSearchedData(filteredData)
+  },[searchQuery,data])
+
   return (
     <div>
       <Header />
-      <div className="pt-24">
-        <h1 className="text-black dark:text-white text-4xl md:px-10 px-2">Browse Luxury Cars</h1>
-
+      <div className="pt-24 min-h-screen">
+        <h1 className="text-black dark:text-white text-3xl sm:text-4xl md:px-10 px-2">Browse Luxury Cars</h1>
+          <input type="search"  className=" py-2 sm:mx-10 w-full sm:w-96 border border-black dark:border-white  placeholder:text-black placeholder:dark:text-white outline-none px-5 rounded text-black dark:text-white mt-3  bg-white dark:bg-[#121212]" placeholder="Search Car" onChange={(e)=>setSearchQuery(e.target.value)} />
         {!mount ? (
           <span className="text-black py-10 dark:text-white gap-3  justify-evenly respnosive__Cars">
             <CarSkeleton />
@@ -41,7 +52,7 @@ const page = () => {
           </span>
         ) : (
           <div className="respnosive__Cars py-10 justify-center md:justify-evenly gap-3 transition-all duration-300 p-3">
-            {data.map((data, key) => {
+            {searchedData.map((data, key) => {
               return (
                 <div key={key} className=" rounded-md">
                   <img
