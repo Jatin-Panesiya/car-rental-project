@@ -11,9 +11,11 @@ const page = () => {
   const id = searchParams.get("id");
   const [data, setData] = useState({});
   const [mount, setMount] = useState(true);
+  
   const carDetailsClass =
     "px-5 py-1.5 bg-white dark:bg-[#121212] text-black dark:text-white border border-emerald-500 text-center rounded text-lg cursor-pointer hover:border-black hover:dark:border-white transition-all duration-300";
-  useEffect(() => {
+  
+    useEffect(() => {
     async function dataFetch() {
       const arrdata = await fetchData();
       const finalData = arrdata.find((data) => data._id === id);
@@ -22,7 +24,8 @@ const page = () => {
     }
     dataFetch();
   }, []);
-   const reviews = ['Nice Car','Very Good Experience']
+
+  const reviews = ['Nice Car','Very Good Experience']
   const {
     cylinders,
     displacement,

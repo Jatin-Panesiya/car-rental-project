@@ -8,7 +8,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 import CarSkeleton from "@/components/user_components/CarSkeleton";
 import { FaPlus } from "react-icons/fa";
 import Link from "next/link";
+
+
 const page = () => {
+  
   const [data, setData] = useState([]);
   const [searchedData,setSearchedData] = useState([])
   const [mount, setMount] = useState(false);

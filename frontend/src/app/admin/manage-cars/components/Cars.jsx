@@ -115,7 +115,7 @@
           </>
         )}
 
-        <p>Available Cars</p>
+        <p className="text-2xl p-2">Available Cars</p>
         <div>
           {filteredData.map(({ _id: id, make: carName, images, price: rent }) => {
             return (
