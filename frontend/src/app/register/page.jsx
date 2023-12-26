@@ -5,12 +5,12 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { FaGoogle } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
 import { validateEmail } from "@/utils/ValidateEmail";
 import { registerUser } from "@/Structure/ApiHandler";
 import { BACKEND_URL } from "@/config";
 import { ValidateForm } from "@/utils/VaidateForm";
 import { validatePassword } from "@/utils/ValidatePassword";
+import { FaGithub } from "react-icons/fa";
 
 const page = () => {
   const defualtData = { full_name: "", email: "", password: "" };
@@ -30,15 +30,13 @@ const page = () => {
       setError("");
     } else {
       setIsError(true);
-      setError(
-        "Minimum 8 characters, at least 1 letter and 1 number Required"
-      );
+      setError("Minimum 8 characters, at least 1 letter and 1 number Required");
     }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-      console.log('form')
+    console.log("form");
     if (!ValidateForm(data) && isBothPasswordMatch && isValidEmail) {
       if (validatePassword(data.password)) {
         await registerUser(data);
@@ -70,7 +68,7 @@ const page = () => {
 
   function handleGoogle() {
     console.log("google");
-    window.open(`${BACKEND_URL}/auth/google`,"_self");
+    window.open(`${BACKEND_URL}/auth/google`, "_self");
   }
 
   return (
@@ -122,9 +120,7 @@ const page = () => {
                   name="password2"
                   onChange={(e) => setPassword2(e.target.value)}
                 />
-                {isError && (
-                  <p className="text-red-500 ">{error}</p>
-                )}
+                {isError && <p className="text-red-500 ">{error}</p>}
                 <button
                   type="submit"
                   className="bg-emerald-600  hover:bg-emerald-800 py-1.5 rounded-sm"
@@ -133,8 +129,8 @@ const page = () => {
                 </button>
 
                 <div className="grid gap-2">
-                  <button 
-                  type="button"
+                  <button
+                    type="button"
                     onClick={handleGoogle}
                     className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300"
                   >
@@ -144,11 +140,14 @@ const page = () => {
                     <p>Continue with Google</p>
                   </button>
 
-                  <button type="button" className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 ">
-                    <p className="text-blue-500">
-                      <FaFacebookF />
+                  <button
+                    type="button"
+                    className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 "
+                  >
+                    <p className="text-white">
+                      <FaGithub />
                     </p>
-                    <p>Continue with Facebook</p>
+                    <p>Continue with Github</p>
                   </button>
                 </div>
               </div>
