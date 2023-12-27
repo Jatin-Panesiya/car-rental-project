@@ -21,3 +21,14 @@
     min-height: auto;
   }
 }
+@media (min-width: 1500px) {
+  .respnosive__Cars {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+}@media (min-width: 2100px) {
+  .respnosive__Cars {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+  }
+}

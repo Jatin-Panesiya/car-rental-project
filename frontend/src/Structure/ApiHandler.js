@@ -126,3 +126,43 @@ export async function getUser(){
     console.error("Error fetching data:", error);
   }
 }
+
+//date 
+
+export async function bookDate(data) {
+  try {
+    const response = await fetch(BACKEND_URL, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials:'include',
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+//Review Post 
+
+export async function sendReview(data) {
+  try {
+    const response = await fetch(BACKEND_URL, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials:'include',
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}

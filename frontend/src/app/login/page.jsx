@@ -4,11 +4,12 @@ import Header from "@/components/user_components/Header";
 import Link from "next/link";
 import React, { useState } from "react";
 import "./style.css";
-import { FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { authenticate, getUser } from "@/Structure/ApiHandler";
 import { ValidateForm } from "@/utils/VaidateForm";
 import { useRouter } from "next/navigation";
+import { BACKEND_URL } from "@/config";
 const page = () => {
   const defualtData = { email: "", password: "" };
   const [data, setData] = useState(defualtData);
@@ -25,13 +26,16 @@ const page = () => {
       setIsError(false);
       setError("");
       await authenticate(data);
-      const user = await getUser()
-      console.log(user)
-
+      const user = await getUser();
+      console.log(user);
     } else {
       setIsError(true);
       setError("Fill up all details");
     }
+  }
+  function handleGoogle() {
+    console.log("google");
+    window.open(`${BACKEND_URL}/auth/google`, "_self");
   }
 
   return (
@@ -40,22 +44,31 @@ const page = () => {
 
       <div className=" background__image">
         <div className="bg-[#00000085] text-white h-screen flex items-center">
-          <div className="bg-[#000000ba] rounded-md w-full md:w-96 m-auto py-5 px-3 md:px-10">
-            <h1 className="text-3xl font-semibold py-5 text-center" >Log in to J&P Cars</h1>
+          <div className="bg-[#000000ba] rounded-md w-full md:w-96 m-auto py-10 px-3 md:px-10">
+            <h1 className="text-3xl font-semibold py-5 text-center">
+              Log in to J&P Cars
+            </h1>
             <div className="grid gap-2 justify-center">
-                <button className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300">
-                  <p>
-                    <FaGoogle />
-                  </p>
-                  <p>Continue with Google</p>
-                </button>
-                <button className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 ">
-                  <p className="text-blue-500">
-                    <FaFacebookF />
-                  </p>
-                  <p>Continue with Facebook</p>
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={handleGoogle}
+                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300"
+              >
+                <p>
+                  <FaGoogle />
+                </p>
+                <p>Continue with Google</p>
+              </button>
+              <button
+                type="button"
+                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 "
+              >
+                <p>
+                  <FaGithub />
+                </p>
+                <p>Continue with Github</p>
+              </button>
+            </div>
             {/* <div className="grid gap-3 ">
               <input
                 type="text"

@@ -7,3 +7,13 @@
         display: grid;
     }
 }
+.border__radius{
+    border-radius: 15px;
+}
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
