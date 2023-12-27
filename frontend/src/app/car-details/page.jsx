@@ -6,6 +6,7 @@ import { fetchData } from "@/Structure/ApiHandler";
 import CarReviews from "@/components/user_components/CarReviews";
 import Loading from "@/components/user_components/Loading";
 import './style.css'
+
 const page = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
@@ -28,7 +29,7 @@ const page = () => {
   const reviews = ['Nice Car','Very Good Experience']
 
   const handleBook = () => {
-    console.log("Booked");
+    console.log(id);
   };
 
   const {
@@ -45,7 +46,21 @@ const page = () => {
     year,
     mpg,
   } = data;
-  const dayPrice = price + 50;
+  
+  const [dateArr, setDateArr] = useState([]);
+
+  useEffect(() => {
+    const newDates = [];
+    
+    for (let i = 1; i <= 7; i++) {
+      const todayDate = new Date();
+      todayDate.setDate(todayDate.getDate() + i);
+      newDates.push(new Date(todayDate));
+    }
+  
+    setDateArr(newDates);
+  }, []); 
+  
   return (
     <div className="text-black dark:text-white  min-h-screen">
       {mount ? (
@@ -55,7 +70,7 @@ const page = () => {
           <div className="responsive__carDetails gap-2 justify-around ">
             <div className="grid gap-2 w-full md:w-[700px] ">
               <p className="text-3xl py-5 text-center md:hidden">
-                {make + " " + model}
+                {make + " " + model} 
               </p>
 
               <img
@@ -96,17 +111,17 @@ const page = () => {
               <div className="pt-10 px-5">
                 <p className="text-3xl py-3">Prices</p>
 
-                <span className="flex items-center">
+                {/* <span className="flex items-center">
                   <p>$</p>
                   <p className="text-4xl px-1">{price} </p> / Hour
-                </span>
+                </span> */}
                 <span className="flex items-center py-5">
                   <p>$</p>
-                  <p className="text-4xl px-1">{dayPrice} </p> / Day
+                  <p className="text-4xl px-1">{price} </p> / Day
                 </span>
 
                 <button
-                  onClick={handleBook}
+                  onClick={()=> handleBook()}
                   className="px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 "
                 >
                   + Book {make + " " + model}
