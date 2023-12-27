@@ -150,11 +150,9 @@ const page = () => {
                   <p className={carDetailsClass}> MPG {mpg}</p>
                   <p className={carDetailsClass}>Highway Mpg {highwayMPG} </p>
                   <p className={carDetailsClass}>Cylinders {cylinders} </p>
-                  <p className={carDetailsClass}>
-                    Displacement {displacement}{" "}
-                  </p>
+                  <p className={carDetailsClass}>Displacement {displacement}</p>
                 </div>
-                <div className="pt-10 px-5">
+                <div className="pt-10 ">
                   <p className="text-3xl py-3">Prices</p>
 
                   {/* <span className="flex items-center">
@@ -182,7 +180,7 @@ const page = () => {
                 return (
                   <div key={i}>
                     <span className="flex items-center gap-2 text-lg ">
-                      <p>{i + 1}.</p>{" "}
+                      <p>{i + 1}.</p>
                       <p className="text-emerald-500 font-semibold">{review}</p>
                     </span>
                   </div>

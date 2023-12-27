@@ -21,9 +21,6 @@ function Home() {
     <div>
       <Header />
       <HeroSection />
-      
-
-
     </div>
   );
 }
