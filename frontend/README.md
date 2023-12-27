@@ -37,6 +37,8 @@ date - 10/12/2023, loading added for asynchronous tasks - done
 date - 11/12/2023, about page design - working
 <br/>
 date - 16/12/2023, contact page and about page design - Done
+<br/>
+date - 27/12/2023, date module working - Done
 
 
 features -
