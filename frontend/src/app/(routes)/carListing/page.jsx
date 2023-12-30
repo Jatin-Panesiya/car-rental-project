@@ -38,13 +38,13 @@ const page = () => {
   return (
     <div>
       <Header />
-      <div className="pt-24 min-h-screen">
+      <div className="pt-24 min-h-screen mx-2">
         <h1 className="text-black dark:text-white text-3xl sm:text-4xl md:px-10 px-2">
           Browse Luxury Cars
         </h1>
         <input
           type="search"
-          className=" py-2 sm:mx-10 w-full sm:w-96 border border-black dark:border-white  placeholder:text-black placeholder:dark:text-white outline-none px-5 rounded text-black dark:text-white mt-3  bg-white dark:bg-[#121212]"
+          className=" py-2 sm:mx-10 w-full  sm:w-96 border border-black dark:border-white  placeholder:text-black placeholder:dark:text-white outline-none px-5 rounded text-black dark:text-white mt-3  bg-white dark:bg-[#121212]"
           placeholder="Search Car"
           onChange={(e) => setSearchQuery(e.target.value)}
         />

@@ -152,7 +152,7 @@ const page = () => {
                   <p className={carDetailsClass}>Cylinders {cylinders} </p>
                   <p className={carDetailsClass}>Displacement {displacement}</p>
                 </div>
-                <div className="pt-10 ">
+                <div className="pt-10 px-5">
                   <p className="text-3xl py-3">Prices</p>
 
                   {/* <span className="flex items-center">
