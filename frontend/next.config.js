@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
+module.exports = {
+  images: {
+    domains: ["i.pinimg.com", "www.shutterstock.com"], // Add 'i.pinimg.com' to the list of allowed domains
+  },
+};

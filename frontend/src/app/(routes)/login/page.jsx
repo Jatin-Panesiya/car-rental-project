@@ -43,8 +43,8 @@ const page = () => {
       <Header />
 
       <div className=" background__image">
-        <div className="bg-[#00000085] text-white h-screen flex items-center">
-          <div className="bg-[#000000ba] rounded-md w-full md:w-96 m-auto py-10 px-3 md:px-10">
+        <div className="bg-[#00000085] text-white h-screen flex items-center ">
+          <div className="bg-[#000000ba] rounded-md w-full md:w-96  py-10 px-3 md:px-10 mx-3 700:mx-auto">
             <h1 className="text-3xl font-semibold py-5 text-center">
               Log in to J&P Cars
             </h1>

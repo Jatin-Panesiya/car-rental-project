@@ -40,6 +40,11 @@ date - 16/12/2023, contact page and about page design - Done
 <br/>
 date - 27/12/2023, date module working - Done
 
+<br/>
+date - 28/12/2023, date module designed - Done
+<br/>
+date - 31/12/2023, responsie check in all pages - Done
+
 
 features -
 User Registration and Login

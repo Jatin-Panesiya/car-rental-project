@@ -108,10 +108,10 @@ const page = () => {
             </div>
           )}
 
-          <div className="py-20">
+          <div className=" py-5 1000:py-20">
             <div className="responsive__carDetails gap-2 justify-around ">
               <div className="grid gap-2 w-full md:w-[700px] ">
-                <p className="text-3xl py-5 text-center md:hidden">
+                <p className="text-3xl py-2 text-center 1000:hidden">
                   {make + " " + model}
                 </p>
 
@@ -166,7 +166,7 @@ const page = () => {
 
                   <button
                     onClick={() => setIsBooking(true)}
-                    className="px-10 py-2.5 text-lg border border-emerald-500 rounded-xl hover:scale-105 transition-all duration-300 "
+                    className="px-10 py-2.5 text-lg  bg-gradient-to-br from-emerald-500 to-emerald-700 text-black rounded-xl hover:scale-105 transition-all duration-300 "
                   >
                     + Book {make + " " + model}
                   </button>

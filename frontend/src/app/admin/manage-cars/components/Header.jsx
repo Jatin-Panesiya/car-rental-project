@@ -17,7 +17,7 @@ const Header = () => {
       <div className="my-1">
         <input
           type="search"
-          className="input  input-bordered input-accent w-full max-w-4xl bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded py-1.5 px-5"
+          className="input  input-bordered input-accent w-full  500:w-96 bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded py-1.5 px-5 border-black  border "
           placeholder="Search Cars"
           onChange={handleSearch}
         />

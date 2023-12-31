@@ -65,7 +65,10 @@ const page = () => {
             {searchedData.length > 0 ? (
               searchedData.map((data, key) => {
                 return (
-                  <div key={key} className=" rounded-md">
+                  <div
+                    key={key}
+                    className=" rounded-md shadow-sm p-3 shadow-emerald-400"
+                  >
                     <img
                       src={data.images[0]}
                       alt={data.make}

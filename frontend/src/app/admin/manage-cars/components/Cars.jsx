@@ -126,7 +126,7 @@
                 <img
                   src={images[0]}
                   alt={carName}
-                  className="w-24 imageResponsive h-24 rounded-md"
+                  className=" w-24 h-24 transition-all duration-200 500:w-32 500:h-28 imageResponsive  rounded-md object-cover"
                 />
                 <p className="w-28 text__responsive">{carName}</p>
                 <p className="rentResponsive">{rent}$</p>
@@ -138,9 +138,12 @@
                   >
                     Edit
                   </Link>
-                  <button className="bg-emerald-400 edit__responsive sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500">
+                  <Link
+                    href={`/admin/edit-car?id=${id}`}
+                    className="bg-emerald-400 edit__responsive sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500"
+                  >
                     <AiFillEdit />
-                  </button>
+                  </Link>
 
                   <button
                     onClick={() => handleDelete(id)}

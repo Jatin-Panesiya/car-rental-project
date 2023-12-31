@@ -15,6 +15,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { editData } from "@/Structure/ApiHandler";
 import Loading from "@/components/user_components/Loading";
+import Image from "next/image";
 
 const page = () => {
   const router = useRouter();
@@ -105,7 +106,7 @@ const page = () => {
     router.push("/admin/manage-cars");
   };
 
-  if (!mount) return <Loading/>;
+  if (!mount) return <Loading />;
   return (
     <form
       onSubmit={handleAdd}
@@ -302,7 +303,10 @@ const page = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3  justify-between gap-2 ">
           <span className="grid w-full gap-1">
-            <label className="px-2">Main Car Image</label>
+            <div className="flex items-center gap-2">
+              <label className="px-2">Main Car Image</label>
+              <img src={data.images[0]} alt="image" width={100} height={100} />
+            </div>
             <input
               type="text"
               placeholder="Enter Main Car Image Link"
@@ -313,7 +317,10 @@ const page = () => {
             />
           </span>
           <span className="grid w-full gap-1">
-            <label className="px-2">Front Car Image</label>
+            <div className="flex items-center gap-2">
+              <label className="px-2">Front Car Image</label>
+              <img src={data.images[1]} alt="image" width={100} height={100} />
+            </div>
             <input
               type="text"
               placeholder="Enter Front Car Image Link"
@@ -324,7 +331,10 @@ const page = () => {
             />
           </span>
           <span className="grid w-full gap-1">
-            <label className="px-2">Side Car Image</label>
+            <div className="flex items-center gap-2">
+              <label className="px-2">Side Car Image</label>
+              <img src={data.images[2]} alt="image" width={100} height={100} />
+            </div>
             <input
               type="text"
               placeholder="Enter Side Car Image Link"
@@ -338,7 +348,11 @@ const page = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 items-center  justify-between gap-2 ">
           <span className="grid w-full gap-1">
-            <label className="px-2">Inner Car Image</label>
+            <div className="flex items-center gap-2">
+              <label className="px-2">Inner Car Image</label>
+              <img src={data.images[3]} alt="image" width={100} height={100} />
+            </div>
+
             <input
               type="text"
               placeholder="Enter Inner Car Image Link"
