@@ -12,7 +12,6 @@ export async function fetchData() {
 }
 // api handling for add car
 export async function addCar(data) {
-  
   const response = await fetch(`${BACKEND_URL}/cars`, {
     method: "POST",
 
@@ -110,7 +109,7 @@ export async function editData(data, id) {
 
 //getuser
 
-export async function getUser(){
+export async function getUser() {
   try {
     const response = await fetch(`${BACKEND_URL}/auth/@me`, {
       method: "GET",
@@ -118,7 +117,7 @@ export async function getUser(){
       headers: {
         "Content-Type": "application/json",
       },
-      credentials:'include',
+      credentials: "include",
     });
     const result = await response.json();
     console.log(result);
@@ -127,7 +126,7 @@ export async function getUser(){
   }
 }
 
-//date 
+//date
 
 export async function bookDate(data) {
   try {
@@ -137,7 +136,7 @@ export async function bookDate(data) {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials:'include',
+      credentials: "include",
       body: JSON.stringify(data),
     });
     const result = await response.json();
@@ -147,7 +146,7 @@ export async function bookDate(data) {
   }
 }
 
-//Review Post 
+//Review Post
 
 export async function sendReview(data) {
   try {
@@ -157,7 +156,7 @@ export async function sendReview(data) {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials:'include',
+      credentials: "include",
       body: JSON.stringify(data),
     });
     const result = await response.json();

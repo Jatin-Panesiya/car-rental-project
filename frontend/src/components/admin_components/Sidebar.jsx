@@ -9,7 +9,7 @@ import { RiFeedbackFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { GrPowerShutdown } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { setStatus } from "@/app/redux/menuSlice";
+import { setStatus } from "@/redux/menuSlice";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {

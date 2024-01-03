@@ -6,15 +6,27 @@ import { bookDate, fetchData } from "@/Structure/ApiHandler";
 import CarReviews from "@/components/user_components/CarReviews";
 import Loading from "@/components/user_components/Loading";
 import "./style.css";
-
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import ImageViewer from "react-simple-image-viewer";
 const page = () => {
+  const isLoggedInUser = useSelector((state) => state.auth.isUser);
+  const router = useRouter();
+
+  if (!isLoggedInUser) {
+    router.push("/login");
+  }
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   const [data, setData] = useState({});
   const [mount, setMount] = useState(true);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  console.log(data.images);
 
   const carDetailsClass =
-    "px-5 py-1.5 bg-white dark:bg-[#121212] text-black dark:text-white border border-emerald-500 text-center rounded text-lg cursor-pointer hover:border-black hover:dark:border-white transition-all duration-300";
+    "px-5 py-1.5 bg-white dark:bg-[#121212] text-black dark:text-white border border-emerald-500 text-center rounded text-sm 320:text-base  515:text-lg cursor-pointer hover:border-black hover:dark:border-white transition-all duration-300 flex items-center";
 
   useEffect(() => {
     async function dataFetch() {
@@ -62,7 +74,15 @@ const page = () => {
 
     setDateArr(newDates);
   }, []);
+  const openImageViewer = (index) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  };
 
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
   return (
     <div className="text-black dark:text-white  min-h-screen">
       {mount ? (
@@ -108,35 +128,48 @@ const page = () => {
             </div>
           )}
 
-          <div className=" py-5 1000:py-20">
-            <div className="responsive__carDetails gap-2 justify-around ">
+          <div className=" py-5 1100:py-20">
+            <div className="grid 1100:flex  gap-2 justify-around ">
               <div className="grid gap-2 w-full md:w-[700px] ">
-                <p className="text-3xl py-2 text-center 1000:hidden">
+                <p className="text-3xl py-2 text-center 1100:hidden">
                   {make + " " + model}
                 </p>
 
                 <img
                   src={images[0]}
                   alt={make}
-                  className=" w-full md:w-[700px]"
+                  className=" w-full md:w-[700px] cursor-pointer hover:scale-105 transition-all duration-500"
+                  onClick={() => openImageViewer(0)}
                 />
                 <div className="grid md:flex gap-2 w-full md:w-[700px]">
                   <img
                     src={images[1]}
                     alt={make}
-                    className="w-full  md:w-[228px]"
+                    className="w-full  md:w-[228px] cursor-pointer hover:scale-105 transition-all duration-500"
+                    onClick={() => openImageViewer(1)}
                   />
                   <img
                     src={images[2]}
                     alt={make}
-                    className="w-full  md:w-[228px]"
+                    className="w-full  md:w-[228px] cursor-pointer hover:scale-105 transition-all duration-500"
+                    onClick={() => openImageViewer(2)}
                   />
                   <img
                     src={images[3]}
                     alt={make}
-                    className="w-full  md:w-[228px]"
+                    className="w-full  md:w-[228px] cursor-pointer hover:scale-105 transition-all duration-500"
+                    onClick={() => openImageViewer(3)}
                   />
                 </div>
+                {isViewerOpen && (
+                  <ImageViewer
+                    src={images}
+                    currentIndex={currentImage}
+                    disableScroll={true}
+                    closeOnClickOutside={true}
+                    onClose={closeImageViewer}
+                  />
+                )}
               </div>
               <div>
                 <p className="text-3xl py-5 text-center">
@@ -166,7 +199,7 @@ const page = () => {
 
                   <button
                     onClick={() => setIsBooking(true)}
-                    className="px-10 py-2.5 text-lg  bg-gradient-to-br from-emerald-500 to-emerald-700 text-black rounded-xl hover:scale-105 transition-all duration-300 "
+                    className="px-10 py-2.5 text-xl poppins-bold  bg-emerald-600 text-black rounded-xl hover:bg-emerald-500 transition-all duration-300 "
                   >
                     + Book {make + " " + model}
                   </button>

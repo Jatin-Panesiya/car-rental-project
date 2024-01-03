@@ -17,13 +17,21 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        // Add your custom font here
+        custom: ["Seymour One", "sans-serif"],
+      },
       screens: {
+        280: "280px",
+        320: "320px",
         300: "300px",
         375: "375px",
         400: "400px",
         500: "500px",
+        515: "515px",
         600: "600px",
         700: "700px",
+        750: "750px",
         800: "800px",
         900: "900px",
         1000: "1000px",

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
@@ -13,6 +15,10 @@
 @font-face {
   font-family: poppins;
   src: url("../fonts/Poppins/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: GRAVEDIGGER;
+  src: url("../fonts/GRAVEDIGGER\ PERSONAL\ USE.ttf");
 }
 @font-face {
   font-family: poppins-bold;
@@ -37,7 +43,10 @@
 .sidebar.open {
   width: 200px;
 }
-
+.hero__title__font{
+  font-family: GRAVEDIGGER;
+  font-weight: 900;
+}
 .sidebar.closed {
   width: 70px;
 }

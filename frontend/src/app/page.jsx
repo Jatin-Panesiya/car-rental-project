@@ -8,15 +8,16 @@ import { useEffect, useState } from "react";
 import { getUser } from "@/Structure/ApiHandler";
 
 function Home() {
-  const [data,setData] = useState('')
+  const [data, setData] = useState("");
 
-  useEffect(()=>{
-    async function getUserData(){
-        const newData = await getUser()
-        setData(newData)
-        console.log(newData)
-    }getUserData()
-  },[])
+  useEffect(() => {
+    async function getUserData() {
+      const newData = await getUser();
+      setData(newData);
+      console.log(newData);
+    }
+    getUserData();
+  }, []);
   return (
     <div>
       <Header />

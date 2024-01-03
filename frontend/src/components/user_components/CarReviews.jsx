@@ -19,7 +19,9 @@ const CarReviews = () => {
   return (
     <div className="w-full md:w-[600px]">
       <div>
-        <p className="text-4xl py-4">Leave a Review</p>
+        <p className="text-xl 280:text-3xl transition-all duration-150 400:text-4xl py-4">
+          Leave a Review
+        </p>
         <p className="text-lg pb-3 text-gray-500">
           Your email address will not be published. Required fields are marked *
         </p>

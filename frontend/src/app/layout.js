@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "../assets/styles/globals.css";
-import { Providers } from "./redux/provider";
+import { Providers } from "../redux/provider";
 import { ThemeProvider } from "../components/user_components/theme-provider";
 import { ThemeSwitcher } from "@/components/user_components/ThemeSwitcher";
 
@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-white dark:bg-[#121212]">
+      <body className="bg-white dark:bg-[#121212] poppins">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers>{children}</Providers>
           <ThemeSwitcher />

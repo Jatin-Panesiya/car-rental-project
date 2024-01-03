@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { setSearchQuery } from "@/app/redux/searchQuery";
+import { setSearchQuery } from "@/redux/searchQuery";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -10,6 +10,8 @@ import { authenticate, getUser } from "@/Structure/ApiHandler";
 import { ValidateForm } from "@/utils/VaidateForm";
 import { useRouter } from "next/navigation";
 import { BACKEND_URL } from "@/config";
+import Image from "next/image";
+
 const page = () => {
   const defualtData = { email: "", password: "" };
   const [data, setData] = useState(defualtData);
@@ -45,28 +47,38 @@ const page = () => {
       <div className=" background__image">
         <div className="bg-[#00000085] text-white h-screen flex items-center ">
           <div className="bg-[#000000ba] rounded-md w-full md:w-96  py-10 px-3 md:px-10 mx-3 700:mx-auto">
-            <h1 className="text-3xl font-semibold py-5 text-center">
-              Log in to J&P Cars
+            <h1 className="text-4xl font-semibold py-5 text-center poppins-bold">
+              Log into J&P Cars
             </h1>
             <div className="grid gap-2 justify-center">
               <button
                 type="button"
                 onClick={handleGoogle}
-                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300"
+                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-5 border-white border transition-all duration-300"
               >
                 <p>
-                  <FaGoogle />
+                  <Image
+                    src={"/googleSVG.svg"}
+                    alt="Google"
+                    width={40}
+                    height={40}
+                  />
                 </p>
-                <p>Continue with Google</p>
+                <p className="font-bold">Log in with Google</p>
               </button>
               <button
                 type="button"
-                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-3 border-white border transition-all duration-300 "
+                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-5 border-white border transition-all duration-300 "
               >
                 <p>
-                  <FaGithub />
+                  <Image
+                    src={"/githubSVG (2).svg"}
+                    alt="Google"
+                    width={40}
+                    height={40}
+                  />
                 </p>
-                <p>Continue with Github</p>
+                <p className="font-bold">Log in with Github</p>
               </button>
             </div>
             {/* <div className="grid gap-3 ">

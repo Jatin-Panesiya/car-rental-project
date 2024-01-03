@@ -8,7 +8,7 @@ const page = () => {
   const menuStatus = useSelector((state) => state.menuStatus);
 
   return (
-    <div className="text-black darK:text-white min-h-screen">
+    <div className="text-black darK:text-white min-h-screen poppins">
       <Sidebar />
 
       <div
