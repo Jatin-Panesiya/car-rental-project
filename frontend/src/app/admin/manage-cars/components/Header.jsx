@@ -13,11 +13,11 @@ const Header = () => {
   }
 
   return (
-    <div className="flex serachResponsive items-center justify-between  px-2">
+    <div className="flex  items-center justify-between  px-2">
       <div className="my-1">
         <input
           type="search"
-          className="input  input-bordered input-accent w-full  500:w-96 bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded py-1.5 px-5 border-black  border "
+          className="input  input-bordered input-accent w-[80%]  bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded py-1.5 px-5 border-black  border "
           placeholder="Search Cars"
           onChange={handleSearch}
         />

@@ -8,8 +8,9 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
-  const headerData = [
+  let headerData = [
     {
       linkName: "Home",
       linkPath: "/",
@@ -41,6 +42,10 @@ const Header = () => {
   // const [filteredHeader]
 
   if (isLoggedInUser) {
+    headerData = headerData.filter((item) => item.linkName !== "Login");
+  }
+  if (!isAdmin) {
+    headerData = headerData.filter((item) => item.linkName !== "Admin");
   }
 
   return (

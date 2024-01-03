@@ -29,16 +29,16 @@ const page = () => {
       <Sidebar />
       <div className={`${menuStatus ? "sm:ml-52" : "ml-20"} min-h-screen  `}>
         <p className="text-4xl p-3">Users</p>
-        <div className="w-full  mx-0 500:mx-1">
-          <input
-            type="search"
-            className="input  input-bordered input-accent w-full  500:w-96 bg-white text-black dark:bg-gray-500 dark:border-white dark:text-white dark:placeholder:text-white  rounded py-1.5 px-5 border-black  border"
-            placeholder="Search Users"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="my-5 mx-1 overflow-auto 375:overflow-auto">
-          <table className="table-auto w-full text-center border border-[#f1f5f9] dark:border-[#374151] ">
+
+        <input
+          type="search"
+          className="input  input-bordered input-accent w-[90%]  flex justify-center mx-auto bg-white text-black dark:bg-[#303134]  dark:text-white dark:placeholder:text-white  rounded py-2 px-5 border-black  border"
+          placeholder="Search Users"
+          onChange={handleChange}
+        />
+
+        <div className="my-5 overflow-auto 375:overflow-auto">
+          <table className="table-auto w-[90%] mx-auto text-center border border-[#f1f5f9] dark:border-[#374151] ">
             <thead className="bg-[#f1f5f9] dark:bg-[#374151] text-lg font-sans ">
               <tr className="py-5">
                 <th className="py-3 ">Name</th>
