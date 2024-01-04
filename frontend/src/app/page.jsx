@@ -9,20 +9,22 @@ import { getUser } from "@/Structure/ApiHandler";
 
 function Home() {
   const [data, setData] = useState("");
-
-  useEffect(() => {
-    async function getUserData() {
+  async function getUserData() {
+    try {
       const newData = await getUser();
       setData(newData);
-      console.log(newData);
+    } catch (err) {
+      console.log({ err });
     }
+  }
+  useEffect(() => {
     getUserData();
   }, []);
   return (
-    <div>
+    <>
       <Header />
       <HeroSection />
-    </div>
+    </>
   );
 }
 

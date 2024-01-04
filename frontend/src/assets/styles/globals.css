@@ -4,7 +4,9 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
-
+a,button {
+  -webkit-tap-highlight-color: transparent !important;
+}
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

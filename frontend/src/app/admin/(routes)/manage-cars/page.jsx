@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import Sidebar from "../../../components/admin_components/Sidebar";
+import Sidebar from "../../../../components/admin_components/Sidebar";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
-import Cars from "./components/Cars";
-import Header from "./components/Header";
+import Cars from "../../../../components/admin_components/Cars";
+import Header from "../../../../components/admin_components/Header";
 
 const page = () => {
   const menuStatus = useSelector((state) => state.menuStatus);

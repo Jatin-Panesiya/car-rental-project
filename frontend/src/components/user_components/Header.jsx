@@ -65,7 +65,7 @@ const Header = () => {
             return (
               <Link
                 key={i}
-                className={`hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${
+                className={`dark:hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${
                   currentRoute === linkPath
                     ? "bg-emerald-300 px-3 rounded py-1"
                     : "bg-white bg-opacity-20 px-3 rounded py-1"
