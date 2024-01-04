@@ -3,8 +3,8 @@ const { createSlice } = require("@reduxjs/toolkit");
 const authUser = createSlice({
   name: "auth",
   initialState: {
-    isUser: true,
-    isAdmin: true,
+    isUser: false,
+    isAdmin: false,
   },
   reducers: {
     isLoggedIn: (state) => {
