@@ -1,6 +1,7 @@
 'use client'
 
-import Sidebar from '@/components/admin_components/Sidebar'
+import DeleteModal from "@/components/admin_components/DeleteModal";
+import Sidebar from "@/components/admin_components/Sidebar";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -16,6 +17,10 @@ const fakeUserData = [
 const page = () => {
   const menuStatus = useSelector((state) => state.menuStatus);
   const [filteredData, setFilteredData] = useState(fakeUserData);
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isBanModel, setIsBanModel] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const [banId, setBanId] = useState("");
 
   function handleChange(e) {
     const inputValue = e.target.value;
@@ -24,10 +29,50 @@ const page = () => {
     });
     setFilteredData(dataToShow);
   }
+  async function handleModalDelete() {
+    // const newData = await deleteCar(deleteId);
+    // setData(newData);
+    // setDeleteId(null);
+    alert("deleted");
+    setIsDeleteModal(false);
+  }
+  async function handleModalBan() {
+    // const newData = await deleteCar(deleteId);
+    // setData(newData);
+    // setDeleteId(null);
+    alert("deleted");
+    setIsDeleteModal(false);
+  }
+
+  function handleDelete(id) {
+    setDeleteId(id);
+    setIsDeleteModal(true);
+  }
+  function handleBan(id) {
+    setBanId(id);
+    setIsBanModel(true);
+  }
   return (
     <>
       <Sidebar />
+
       <div className={`${menuStatus ? "sm:ml-52" : "ml-20"} min-h-screen  `}>
+        {isDeleteModal && (
+          <DeleteModal
+            setIsDeleteModal={setIsDeleteModal}
+            handleModalDelete={handleModalBan}
+            btn={"Delete"}
+            msg={"Are you sure you want to Delete this User ?"}
+          />
+        )}
+        {isBanModel && (
+          <DeleteModal
+            btn={"Ban"}
+            setIsDeleteModal={setIsBanModel}
+            handleModalDelete={handleModalDelete}
+            msg={"Are you sure you want to Ban this User ?"}
+          />
+        )}
         <p className="text-4xl p-3">Users</p>
 
         <input
@@ -38,48 +83,52 @@ const page = () => {
         />
 
         <div className="my-5 overflow-auto 375:overflow-auto">
-          <table className="table-auto w-[90%] mx-auto text-center border border-[#f1f5f9] dark:border-[#374151] ">
-            <thead className="bg-[#f1f5f9] dark:bg-[#374151] text-lg font-sans ">
-              <tr className="py-5">
-                <th className="py-3 ">Name</th>
-                <th className="py-3 ">Email</th>
-                <th className="py-3 ">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.length > 0 ? (
-                filteredData.map(({ name, email }, i) => (
+          {filteredData.length > 0 ? (
+            <table className="table-auto w-[90%] mx-auto text-center border border-[#f1f5f9] dark:border-[#374151] ">
+              <thead className="bg-[#f1f5f9] dark:bg-[#374151] text-lg font-sans ">
+                <tr className="py-5">
+                  <th className="py-3 ">Name</th>
+                  <th className="py-3 ">Email</th>
+                  <th className="py-3 ">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData.map(({ name, email }, i) => (
                   <tr
                     key={i}
                     className={`${
-                      i % 2 !== 0 && " bg-[#f1f5f9] dark:bg-[#374151]"
+                      i % 2 !== 0 && "bg-[#f1f5f9] dark:bg-[#374151]"
                     }`}
                   >
                     <td className="py-3 px-2">{name}</td>
                     <td className="px-2">{email}</td>
                     <td>
-                      <div className="flex gap-2 justify-center items-center ">
+                      <div className="flex gap-2 justify-center items-center">
                         <button
-                          className=" px-3 400:px-5 py-0.5  rounded items-center flex justify-center border border-red-500   gap-1 "
+                          className="bg-transparent border border-red-500 px-4 py-0.5  rounded-md hover:bg-red-500 hover:text-white transition-all duration-200 font-semibold"
                           title="delete user"
+                          onClick={() => handleDelete(i)}
                         >
                           <p> Delete</p>
                         </button>
                         <button
-                          className=" px-3 400:px-5 py-0.5 rounded flex items-center justify-center border border-green-500 gap-1  "
+                          className="bg-transparent border border-green-500   px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold"
                           title="ban user"
+                          onClick={() => handleBan(i)}
                         >
                           <p> Ban </p>
                         </button>
                       </div>
                     </td>
                   </tr>
-                ))
-              ) : (
-                <p className="p-3 text-base ">No user is matching</p>
-              )}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="p-3 500:text-2xl poppins-bold text-base text-center ">
+              No user is matching
+            </p>
+          )}
         </div>
       </div>
     </>
