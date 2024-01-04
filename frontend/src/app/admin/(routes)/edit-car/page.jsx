@@ -7,6 +7,7 @@ import {
   carSeats,
   carYear,
   cylinderCount,
+  defaultData,
   driveTypes,
   fuelTypes,
 } from "@/config";
@@ -15,7 +16,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { editData } from "@/Structure/ApiHandler";
 import Loading from "@/components/user_components/Loading";
-import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const page = () => {
   const router = useRouter();
@@ -23,21 +24,7 @@ const page = () => {
   const id = searchParams.get("id");
   const [mount, setMount] = useState(false);
   const [error, setError] = useState(false);
-  const defaultData = {
-    make: "",
-    model: "",
-    price: "",
-    seats: 4,
-    year: 1980,
-    class: "Classic",
-    mpg: "",
-    displacement: "",
-    drive: "front-wheel drive (FWD)",
-    fuel_type: "Diesel",
-    highwayMPG: "",
-    images: [],
-    cylinders: 2,
-  };
+
   const [data, setData] = useState(defaultData);
 
   useEffect(() => {
@@ -83,7 +70,6 @@ const page = () => {
     fetchData();
   }, []);
 
-  console.log(data);
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -105,7 +91,11 @@ const page = () => {
     editData(data, id);
     router.push("/admin/manage-cars");
   };
-
+  const { isUser, isAdmin } = useSelector((state) => state.auth);
+  if (!isUser || !isAdmin) {
+    router.push("/");
+  }
+  if (!isUser || !isAdmin) return <Loading />;
   if (!mount) return <Loading />;
   return (
     <form

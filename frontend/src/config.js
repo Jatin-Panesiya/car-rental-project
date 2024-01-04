@@ -13,7 +13,21 @@ export const carClassData = [
 export const cylinderCount = [
   2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
 ];
-
+export const defaultData = {
+  make: "",
+  model: "",
+  price: "",
+  seats: 4,
+  year: 1980,
+  class: "Classic",
+  mpg: "",
+  displacement: "",
+  drive: "front-wheel drive (FWD)",
+  fuel_type: "Diesel",
+  highwayMPG: "",
+  images: [],
+  cylinders: 2,
+};
 export const driveTypes = [
   "front-wheel drive (FWD)",
   "rear-wheel drive (RWD)",

@@ -2,6 +2,8 @@
 
 import DeleteModal from "@/components/admin_components/DeleteModal";
 import Sidebar from "@/components/admin_components/Sidebar";
+import Loading from "@/components/user_components/Loading";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -52,6 +54,12 @@ const page = () => {
     setBanId(id);
     setIsBanModel(true);
   }
+  const router = useRouter();
+  const { isUser, isAdmin } = useSelector((state) => state.auth);
+  if (!isUser || !isAdmin) {
+    router.push("/");
+  }
+  if (!isUser || !isAdmin) return <Loading />;
   return (
     <>
       <Sidebar />

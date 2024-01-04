@@ -5,6 +5,7 @@ import {
   carSeats,
   carYear,
   cylinderCount,
+  defaultData,
   driveTypes,
   fuelTypes,
 } from "@/config";
@@ -12,24 +13,11 @@ import { MdError } from "react-icons/md";
 import { addCar } from "@/Structure/ApiHandler";
 import { useRouter } from "next/navigation";
 import { ValidateForm } from "@/utils/VaidateForm";
+import { useSelector } from "react-redux";
+import Loading from "@/components/user_components/Loading";
 
 const page = () => {
   const router = useRouter();
-  const defaultData = {
-    make: "",
-    model: "",
-    price: "",
-    seats: 4,
-    year: 1980,
-    class: "Classic",
-    mpg: "",
-    displacement: "",
-    drive: "front-wheel drive (FWD)",
-    fuel_type: "Diesel",
-    highwayMPG: "",
-    images: [],
-    cylinders: 2,
-  };
 
   const [data, setData] = useState(defaultData);
   const [error, setError] = useState(false);
@@ -59,6 +47,11 @@ const page = () => {
       setError(true);
     }
   };
+  const { isUser, isAdmin } = useSelector((state) => state.auth);
+  if (!isUser || !isAdmin) {
+    router.push("/");
+  }
+  if (!isUser || !isAdmin) return <Loading />;
 
   return (
     <form
