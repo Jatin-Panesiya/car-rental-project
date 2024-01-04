@@ -44,6 +44,10 @@ date - 27/12/2023, date module working - Done
 date - 28/12/2023, date module designed - Done
 <br/>
 date - 31/12/2023, responsie check in all pages - Done
+<br/>
+date - 3/1/2024, applied conditional rendering in menu for authentication - Done
+<br/>
+date - 4/1/2024, made some changes to ui and responsiveness - Done
 
 
 features -
