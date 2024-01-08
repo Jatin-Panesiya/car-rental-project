@@ -7,11 +7,15 @@ import "./carListingStyle.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import CarSkeleton from "@/components/user_components/CarSkeleton";
 import { FaPlus } from "react-icons/fa";
-import Link from "next/link";
 import { useSelector } from "react-redux";
 import { debounce } from "lodash";
 import { useRouter } from "next/navigation";
 import LoginModal from "@/components/user_components/LoginModal";
+import { MdOutlineAirlineSeatReclineNormal } from "react-icons/md";
+import { BsFillFuelPumpFill } from "react-icons/bs";
+import { LuBadgeDollarSign } from "react-icons/lu";
+import { MdDateRange } from "react-icons/md";
+
 const page = () => {
   const [data, setData] = useState([]);
   const [searchedData, setSearchedData] = useState([]);
@@ -76,7 +80,7 @@ const page = () => {
           onChange={handleSearchChange}
         />
         {!isDataLoaded ? (
-          <span className="text-black py-10 dark:text-white gap-3  justify-evenly respnosive__Cars">
+          <span className="text-black py-10 dark:text-white gap-3   justify-evenly respnosive__Cars">
             <CarSkeleton />
             <CarSkeleton />
             <CarSkeleton />
@@ -92,33 +96,61 @@ const page = () => {
             className={`respnosive__Cars py-10 justify-center "md:justify-center" mx-1 md:mx-10 gap-3 transition-all duration-300 p-3`}
           >
             {searchedData.length > 0 ? (
-              searchedData.map((data, key) => {
-                return (
-                  <>
-                    <div
-                      key={key}
-                      className=" rounded-md shadow-sm p-3 shadow-emerald-400"
-                    >
-                      <img
-                        src={data.images[0]}
-                        alt={data.make}
-                        className="w-full rounded-md image__resp object-cover"
-                        loading="lazy"
-                      />
-                      <p className="text-black dark:text-white text-xl font-mono text-center py-1.5 poppins-bold">
-                        {data.make + " " + data.model}
-                      </p>
-
-                      <button
-                        onClick={() => checkUserIsLoggedIn(data._id)}
-                        className="text-center w-full py-3  bg-transparent  mt-2 rounded-md text-lg font-semibold border border-emerald-400 flex items-center justify-center gap-2 text-black dark:text-white hover:transition-all hover:bg-emerald-300 duration-300 hover:dark:text-black  "
+              searchedData.map(
+                ({
+                  _id,
+                  make,
+                  model,
+                  images,
+                  fuel_type,
+                  year,
+                  price,
+                  seats,
+                }) => {
+                  return (
+                    <>
+                      <div
+                        key={_id}
+                        className={` rounded-xl p-3 cursor-pointer bg-slate-100 dark:bg-neutral-950 dark:shadow-slate-600 shadow-sm shadow-gray-700 `}
                       >
-                        <FaPlus /> <p> Book Now</p>
-                      </button>
-                    </div>
-                  </>
-                );
-              })
+                        <img
+                          src={images[0]}
+                          alt={make}
+                          className="w-full rounded-2xl image__resp object-cover"
+                          loading="lazy"
+                        />
+                        <p className="text-black dark:text-white text-xl font-mono text-center py-1.5 poppins-bold">
+                          {make + " " + model}
+                        </p>
+                        <div className="flex justify-between p-2">
+                          <span className="text-center">
+                            <MdOutlineAirlineSeatReclineNormal className="w-full text-lg" />{" "}
+                            {seats}
+                          </span>
+                          <p className="text-center">
+                            <BsFillFuelPumpFill className="w-full text-lg" />
+                            {fuel_type}
+                          </p>
+                          <p className="text-center">
+                            <MdDateRange className="w-full text-lg" />
+                            {year}
+                          </p>
+                          <p className="text-center text-green-500 font-bold">
+                            <LuBadgeDollarSign className="w-full text-lg text-green-500 font-bold" />
+                            {price}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => checkUserIsLoggedIn(data._id)}
+                          className="text-center w-full py-3  bg-transparent  mt-2 rounded-xl text-lg font-semibold border border-emerald-400 flex items-center justify-center gap-2 text-black dark:text-white hover:transition-all hover:bg-emerald-300 duration-300 hover:dark:text-black  "
+                        >
+                          <FaPlus /> <p> Book Now</p>
+                        </button>
+                      </div>
+                    </>
+                  );
+                }
+              )
             ) : (
               <p className="text-center justify-center w-full text-2xl font-semibold">
                 No Cars are matching

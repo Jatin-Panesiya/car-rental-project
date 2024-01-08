@@ -5,6 +5,7 @@
 .image__resp {
   height: 250px;
   width: 350px;
+  
 }
 @media (max-width: 950px) {
   .respnosive__Cars {

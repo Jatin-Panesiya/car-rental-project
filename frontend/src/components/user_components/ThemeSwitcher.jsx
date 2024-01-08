@@ -1,28 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // useEffect(() => {
-  //   // Check if the user prefers dark mode
-  //   const prefersDarkMode =
-  //     window.matchMedia &&
-  //     window.matchMedia("(prefers-color-scheme: dark)").matches;
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme));
+    setTheme(theme);
+  }, [theme, setTheme]);
 
-  //   // Update state based on the user's preference
-  //   const userTheme = prefersDarkMode ? "dark" : "light";
-  //   setTheme(userTheme);
-  // }, [window.matchMedia]);
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    setTheme(theme);
+  }, [theme, setTheme]);
 
-  useEffect(()=>{ 
-    setTheme('dark')
-  },[])
-  
   useEffect(() => {
     setMounted(true);
   }, []);

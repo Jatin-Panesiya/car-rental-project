@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-white dark:bg-[#121212] poppins">
+      <body className="bg-slate-200 dark:bg-[#121212] poppins">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers>{children}</Providers>
           <ThemeSwitcher />
