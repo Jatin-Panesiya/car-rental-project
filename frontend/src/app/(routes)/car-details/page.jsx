@@ -12,6 +12,7 @@ import CarDetailsImages from "@/components/user_components/CarDetailsImages";
 import DateBookingModal from "@/components/user_components/DateBookingModal";
 import LoginModal from "@/components/user_components/LoginModal";
 const page = () => {
+  
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
   const router = useRouter();
   const searchParams = useSearchParams();

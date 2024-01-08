@@ -5,6 +5,9 @@ const authUser = createSlice({
   initialState: {
     isUser: false,
     isAdmin: true,
+    user:{
+      
+    }
   },
   reducers: {
     isLoggedIn: (state) => {
