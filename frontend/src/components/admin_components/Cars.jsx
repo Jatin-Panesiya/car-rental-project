@@ -61,18 +61,18 @@ const Cars = () => {
 
       <p className="text-2xl p-2">Available Cars</p>
       {filteredData.length > 0 ? (
-        <div>
+        <div className="grid gap-2 py-2">
           {filteredData.map(
             ({ _id: id, make: carName, images, price: rent }) => {
               return (
                 <div
                   key={id}
-                  className={`border shadow-emerald-200 flex items-center mx-2 justify-between my-1  rounded-md p-2 text-center `}
+                  className={` bg-slate-200 dark:bg-neutral-950 dark:shadow-slate-600 shadow-sm shadow-slate-600 rounded-xl  flex items-center mx-2 justify-between my-1   p-2 text-center `}
                 >
                   <img
                     src={images[0]}
                     alt={carName}
-                    className=" w-24 h-24 transition-all duration-200 500:w-32 500:h-28 imageResponsive  rounded-md object-cover"
+                    className=" w-24 h-24 transition-all duration-200 500:w-32 500:h-28 imageResponsive  rounded-xl object-cover"
                   />
                   <p className="w-28 text__responsive">{carName}</p>
                   <p className="rentResponsive">{rent}$</p>

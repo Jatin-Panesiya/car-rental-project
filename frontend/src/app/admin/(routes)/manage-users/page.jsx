@@ -90,7 +90,7 @@ const page = () => {
           onChange={handleChange}
         />
 
-        <div className="my-5 overflow-auto 375:overflow-auto">
+        <div className="my-5 overflow-auto">
           {filteredData.length > 0 ? (
             <table className="table-auto w-[90%] mx-auto text-center border border-[#f1f5f9] dark:border-[#374151] ">
               <thead className="bg-[#f1f5f9] dark:bg-[#374151] text-lg font-sans ">
