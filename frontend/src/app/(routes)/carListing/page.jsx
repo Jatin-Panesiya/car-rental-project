@@ -111,7 +111,7 @@ const page = () => {
                     <>
                       <div
                         key={_id}
-                        className={` rounded-xl p-3 cursor-pointer bg-slate-100 dark:bg-neutral-950 dark:shadow-slate-600 shadow-sm shadow-gray-700 `}
+                        className={` rounded-xl p-3 cursor-pointer bg-slate-100 dark:bg-neutral-950 dark:shadow-slate-600  shadow-xl dark:shadow-none dark:border-none border border-[#dcdcd78c] shadow-[#dcdcd78c] `}
                       >
                         <img
                           src={images[0]}

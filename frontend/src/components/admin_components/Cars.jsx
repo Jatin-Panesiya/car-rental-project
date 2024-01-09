@@ -6,8 +6,7 @@ import Loading from "@/components/user_components/Loading";
 import { setSearchQuery } from "@/redux/searchQuery";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
-import { MdDeleteForever } from "react-icons/md";
+
 import { useDispatch, useSelector } from "react-redux";
 import { HiDotsHorizontal } from "react-icons/hi";
 
@@ -96,7 +95,7 @@ const Cars = () => {
             const { _id: id, make, images, price, model, seats, mpg } = data;
             return (
               <div
-                className="bg-[#dcdcd78c] dark:bg-[#303030] p-3 rounded-xl w-[95%] 500:w-96 m-2 relative"
+                className=" shadow-xl dark:shadow-none dark:border-none border border-[#dcdcd78c] shadow-[#dcdcd78c] dark:bg-[#303030] p-3 rounded-xl w-[95%] 500:w-96 m-2 relative"
                 key={id}
               >
                 <div className="flex  justify-between">
@@ -146,46 +145,6 @@ const Cars = () => {
                   </div>
                 )}
               </div>
-              // <div
-              //   key={id}
-              //   className={` bg-slate-200 dark:bg-neutral-950 dark:shadow-slate-600 shadow-sm shadow-slate-600 rounded-xl  flex items-center mx-2 justify-between my-1   p-2 text-center `}
-              // >
-              //   <img
-              //     src={images[0]}
-              //     alt={carName}
-              //     className=" w-24 h-24 transition-all duration-200 500:w-32 500:h-28 imageResponsive  rounded-xl object-cover"
-              //   />
-              //   <p className="w-28 text__responsive">{carName}</p>
-              //   <p className="rentResponsive">{rent}$</p>
-
-              //   <div className="flex editDeleteResponsive items-center gap-2">
-              //     <Link
-              //       href={`/admin/edit-car?id=${id}`}
-              //       className="bg-transparent border border-green-500  hidden sm:block px-4 py-0.5 rounded-md hover:bg-green-500 hover:text-white transition-all duration-200 font-semibold"
-              //     >
-              //       Edit
-              //     </Link>
-              //     <Link
-              //       href={`/admin/edit-car?id=${id}`}
-              //       className="bg-emerald-400 edit__responsive sm:hidden px-4 py-1 rounded-sm hover:bg-emerald-500"
-              //     >
-              //       <AiFillEdit />
-              //     </Link>
-
-              //     <button
-              //       onClick={() => handleDelete(id)}
-              //       className="bg-transparent border border-red-500 px-4 py-0.5 hidden sm:block rounded-md hover:bg-red-500 hover:text-white transition-all duration-200 font-semibold"
-              //     >
-              //       Delete
-              //     </button>
-              //     <button
-              //       onClick={handleDelete}
-              //       className="bg-red-400 px-4 edit__responsive  sm:hidden py-1 rounded-sm hover:bg-red-500"
-              //     >
-              //       <MdDeleteForever />
-              //     </button>
-              //   </div>
-              // </div>
             );
           })}
         </div>
