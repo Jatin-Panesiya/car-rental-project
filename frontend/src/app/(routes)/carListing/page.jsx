@@ -141,7 +141,7 @@ const page = () => {
                           </p>
                         </div>
                         <button
-                          onClick={() => checkUserIsLoggedIn(data._id)}
+                          onClick={() => checkUserIsLoggedIn(_id)}
                           className="text-center w-full py-3  bg-transparent  mt-2 rounded-xl text-lg font-semibold border border-emerald-400 flex items-center justify-center gap-2 text-black dark:text-white hover:transition-all hover:bg-emerald-300 duration-300 hover:dark:text-black  "
                         >
                           <FaPlus /> <p> Book Now</p>

@@ -63,7 +63,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className=" fixed h-screen">
+    <div className=" fixed h-screen z-50 ">
       <div className="flex pl-5 py-3 bg-slate-100 dark:bg-gray-700 text-black dark:text-white">
         <CgMenuCheese
           onClick={handleHamburger}
@@ -85,7 +85,7 @@ const Sidebar = () => {
                     className={`${
                       currentRoute === data.linkPath &&
                       "bg-emerald-300 dark:text-black "
-                    } hover:bg-slate-300 dark:hover:text-black flex items-center justify-between active__menu__sidebar__hover   px-3 rounded my-1`}
+                    } hover:bg-slate-300 dark:hover:text-black flex items-center justify-between active__menu__sidebar__hover   px-3 rounded `}
                   >
                     <Link
                       href={data.linkPath}
@@ -103,7 +103,7 @@ const Sidebar = () => {
                 return (
                   <div
                     key={i}
-                    className={`hover:bg-slate-300 rounded my-1 dark:hover:text-black ${
+                    className={`hover:bg-slate-300 rounded  dark:hover:text-black ${
                       data.linkPath === currentRoute &&
                       "bg-emerald-300 dark:text-black"
                     }`}
