@@ -1,14 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { MdOutlineMenu } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "@/Structure/ApiHandler";
+import { set } from "@/redux/authSlice";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const [auth, setAuth] = useState()
+  const user = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  async function getData() {
+    let data = await getUser();
+    setAuth(data)
+    dispatch(set(data))
+
+  }
+
+  useEffect(() => {
+    if (!user.isUser) getData()
+  }, [])
+
+
+
+
+
 
   let headerData = [
     {
@@ -28,14 +50,6 @@ const Header = () => {
       linkName: "Contact",
       linkPath: "/contact-us",
     },
-    {
-      linkName: "Login",
-      linkPath: "/login",
-    },
-    {
-      linkName: "Admin",
-      linkPath: "/admin",
-    },
   ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentRoute = usePathname();
@@ -47,6 +61,48 @@ const Header = () => {
   if (!isAdmin) {
     headerData = headerData.filter((item) => item.linkName !== "Admin");
   }
+
+
+
+
+
+
+  const userButton = (
+    <button className="dark:hover:text-white flex items-center gap-2 text-sm">
+      <img className="w-10 h-10 rounded-full" src={auth?.user?.avatar} alt="User Avatar" />
+      <p className="text-center mx-auto">{auth?.user?.name}</p>
+    </button>
+  );
+  
+  const adminLink = (
+    <Link
+      className={`dark:hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${currentRoute === "/admin"
+        ? "bg-emerald-300 px-3 rounded py-1"
+        : "bg-white bg-opacity-20 px-3 rounded py-1"
+        } `}
+      href={"/admin"}
+    >
+      Admin
+    </Link>
+  );
+  
+  const loginLink = (
+    <Link
+      className={`dark:hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${currentRoute === "/admin"
+        ? "bg-emerald-300 px-3 rounded py-1"
+        : "bg-white bg-opacity-20 px-3 rounded py-1"
+        } `}
+      href={"/login"}
+    >
+      Login
+    </Link>
+  );
+  
+
+
+
+
+
 
   return (
     <div>
@@ -65,17 +121,27 @@ const Header = () => {
             return (
               <Link
                 key={i}
-                className={`dark:hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${
-                  currentRoute === linkPath
-                    ? "bg-emerald-300 px-3 rounded py-1"
-                    : "bg-white bg-opacity-20 px-3 rounded py-1"
-                } `}
+                className={`dark:hover:text-white transition-colors duration-300 text-black text-xl shadow-sm shadow-slate-400 ${currentRoute === linkPath
+                  ? "bg-emerald-300 px-3 rounded py-1"
+                  : "bg-white bg-opacity-20 px-3 rounded py-1"
+                  } `}
                 href={linkPath}
               >
                 {linkName}
               </Link>
             );
           })}
+
+<>
+    {auth?.isUser ? (
+      <>
+          {auth?.isAdmin ? adminLink : null}
+        {userButton}
+      </>
+    ) : (
+      loginLink
+    )}
+  </>
         </div>
 
         {/* mobile menu*/}
@@ -85,11 +151,10 @@ const Header = () => {
               return (
                 <Link
                   key={i}
-                  className={`hover:text-emerald-500 text-black dark:text-white ${
-                    currentRoute === linkPath
-                      ? "bg-emerald-600 px-3 rounded py-1"
-                      : "bg-white bg-opacity-20 px-3 rounded py-1"
-                  } `}
+                  className={`hover:text-emerald-500 text-black dark:text-white ${currentRoute === linkPath
+                    ? "bg-emerald-600 px-3 rounded py-1"
+                    : "bg-white bg-opacity-20 px-3 rounded py-1"
+                    } `}
                   href={linkPath}
                 >
                   {linkName}

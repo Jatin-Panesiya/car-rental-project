@@ -8,7 +8,7 @@ export const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(theme));
+   // localStorage.setItem("theme", JSON.stringify(theme));
     setTheme(theme);
   }, [theme, setTheme]);
 

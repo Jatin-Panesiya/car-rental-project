@@ -120,8 +120,9 @@ export async function getUser() {
       credentials: "include",
     });
     const result = await response.json();
-    console.log(result);
+    return result
   } catch (error) {
+    return {}
     console.error("Error fetching data:", error);
   }
 }
