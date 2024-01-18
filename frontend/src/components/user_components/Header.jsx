@@ -53,7 +53,7 @@ const Header = () => {
       <div className="flex items-center z-10 gap-5 bg-transparent  shadow-md  px-5 py-5  justify-between fixed w-full backdrop-blur-sm backdrop-brightness-100  text-black ">
         {/* Logo*/}
         <Link href={"/"}>
-          <h1 className="poppins-bold text-3xl flex items-center text-emerald-500 uppercase">
+          <h1 className="poppins-bold text-3xl flex items-center text-black dark:text-white uppercase">
             J&P Cars
           </h1>
         </Link>

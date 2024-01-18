@@ -37,9 +37,11 @@ a,button {
   font-family: poppins-bold;
 }
 .bg-img {
-  background-image: url("../../../public/mustang.avif");
+  background-image: url("https://images.pexels.com/photos/10394775/pexels-photo-10394775.jpeg?cs=srgb&dl=pexels-auto-records-10394775.jpg&fm=jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position-x: center;
+  background-position-y: top;
 }
 
 .sidebar.open {

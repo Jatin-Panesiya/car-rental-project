@@ -8,7 +8,7 @@ const HeroSection = () => {
     <>
       <div className="bg-img ">
         <div className="bg-emerald-950  bg-opacity-30 h-screen w-full  text-white ">
-          <div className="flex flex-col justify-center items-center h-screen gap-5">
+          <div className="flex flex-col justify-end items-center h-96 gap-5">
             <p className="text-base 280:text-lg transition-all duration-150 320:text-xl 375:text-2xl sm:text-3xl lg:text-6xl  md:text-4xl hero__title__font  uppercase">
               Drive Your Dream Car Now
             </p>
