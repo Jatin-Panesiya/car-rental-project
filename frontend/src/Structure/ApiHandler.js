@@ -120,25 +120,24 @@ export async function getUser() {
       credentials: "include",
     });
     const result = await response.json();
-    return result
+    return result;
   } catch (error) {
-    return {}
-    console.error("Error fetching data:", error);
+    return {};
   }
 }
 
 //date
 
-export async function bookDate(data) {
+export async function bookDate(id, date) {
   try {
-    const response = await fetch(BACKEND_URL, {
+    const response = await fetch(`${BACKEND_URL}/cars/book/${id}`, {
       method: "POST",
 
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(data),
+      body: JSON.stringify(date),
     });
     const result = await response.json();
     console.log(result);

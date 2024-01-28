@@ -1,3 +1,4 @@
+import { bookDate } from "@/Structure/ApiHandler";
 import React, { useEffect, useState } from "react";
 
 const DateBookingModal = ({ setIsBookingModalOpen }) => {
@@ -5,7 +6,7 @@ const DateBookingModal = ({ setIsBookingModalOpen }) => {
 
   const handleBooking = (date, month) => {
     const finalDate = date + month;
-    bookDate({ id, date: finalDate });
+    bookDate(id, finalDate);
   };
   useEffect(() => {
     const newDates = [];
