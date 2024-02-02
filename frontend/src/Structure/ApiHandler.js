@@ -129,6 +129,7 @@ export async function getUser() {
 //date
 
 export async function bookDate(id, date) {
+  console.log(date)
   try {
     const response = await fetch(`${BACKEND_URL}/cars/book/${id}`, {
       method: "POST",
@@ -137,10 +138,10 @@ export async function bookDate(id, date) {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(date),
+      body: JSON.stringify({date}),
     });
     const result = await response.json();
-    console.log(result);
+    return result.paymentLink
   } catch (error) {
     console.error("Error fetching data:", error);
   }

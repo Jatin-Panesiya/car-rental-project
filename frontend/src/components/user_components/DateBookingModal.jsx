@@ -1,12 +1,16 @@
 import { bookDate } from "@/Structure/ApiHandler";
 import React, { useEffect, useState } from "react";
+//import { useRouter } from "next/navigation";
 
-const DateBookingModal = ({ setIsBookingModalOpen }) => {
+const DateBookingModal = ({ setIsBookingModalOpen,id }) => {
   const [bookingDates, setBookingDates] = useState([]);
+//  const router = useRouter();
 
-  const handleBooking = (date, month) => {
+  const handleBooking = async(date, month) => {
     const finalDate = date + month;
-    bookDate(id, finalDate);
+    let paymentLink =  await bookDate(id, finalDate);
+    return window.open(paymentLink,"_self");
+
   };
   useEffect(() => {
     const newDates = [];

@@ -66,7 +66,7 @@ const page = () => {
         <>
           {/* Book Car Modal */}
           {isBookingModalOpen && (
-            <DateBookingModal setIsBookingModalOpen={setIsBookingModalOpen} />
+            <DateBookingModal setIsBookingModalOpen={setIsBookingModalOpen} id={id} />
           )}
 
           <div className=" py-5 1100:py-20">
