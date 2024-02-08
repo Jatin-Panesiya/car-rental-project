@@ -24,6 +24,9 @@ const page = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
+  console.log(isLoggedInUser)
+
+
   const router = useRouter();
   async function dataFetch() {
     try {

@@ -2,7 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 export const menuStatusReducer = createSlice({
   name: "menuStatus",
-  initialState: window.innerWidth > 800 ? true : false,
+  initialState:false,
   reducers: {
     setStatus: (_, action) => {
       return action.payload;

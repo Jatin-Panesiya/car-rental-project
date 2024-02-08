@@ -92,7 +92,7 @@ const Header = () => {
         ? "bg-emerald-300 px-3 rounded py-1"
         : "bg-white bg-opacity-20 px-3 rounded py-1"
         } `}
-      href={"/login"}
+      href={`/login`}
     >
       Login
     </Link>
