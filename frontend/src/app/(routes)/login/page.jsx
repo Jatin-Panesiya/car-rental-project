@@ -51,22 +51,7 @@ const page = () => {
                 </p>
                 <p className="font-bold">Log in with Google</p>
               </button>
-              <button
-                onClick={handleGoogle}
-                type="button"
-                className="bg-transparent text-white hover:bg-white hover:text-black rounded  flex items-center gap-2 py-1 px-5 border-white border transition-all duration-300 "
-              >
-                <p>
-                  <Image
-                    src={"/githubSVG (2).svg"}
-                    alt="Google"
-                    width={40}
-                    height={40}
-                  />
-                </p>
-                <p className="font-bold">Log in with Github</p>
-              </button>
-            </div>
+                </div>
           </div>
         </div>
       </div>
