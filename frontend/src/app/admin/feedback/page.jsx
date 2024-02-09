@@ -9,10 +9,7 @@ const page = () => {
   const menuStatus = useSelector((state) => state.menuStatus);
   const router = useRouter();
   const { isUser, isAdmin } = useSelector((state) => state.auth);
-  if (!isUser || !isAdmin) {
-    router.push("/");
-  }
-  if (!isUser || !isAdmin) return <Loading />;
+    if (!isUser || !isAdmin) return <Loading />;
   return (
     <>
       <Sidebar />

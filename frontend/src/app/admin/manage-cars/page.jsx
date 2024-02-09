@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Sidebar from "../../../../components/admin_components/Sidebar";
+import Sidebar from "../../../components/admin_components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 
-import Cars from "../../../../components/admin_components/Cars";
-import Header from "../../../../components/admin_components/Header";
+import Cars from "../../../components/admin_components/Cars";
+import Header from "../../../components/admin_components/Header";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/user_components/Loading";
 

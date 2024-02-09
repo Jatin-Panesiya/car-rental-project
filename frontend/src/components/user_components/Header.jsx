@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "@/Structure/ApiHandler";
 import { set } from "@/redux/authSlice";
 import { useTheme } from "next-themes";
+import { BACKEND_URL } from "@/config";
 
 const Header = () => {
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
@@ -18,19 +19,13 @@ const Header = () => {
 
   async function getData() {
     let data = await getUser();
+    console.log(data)
     setAuth(data)
     dispatch(set(data))
-
   }
-
   useEffect(() => {
-    if (!user.isUser) getData()
+   getData()
   }, [])
-
-
-
-
-
 
   let headerData = [
     {
@@ -62,17 +57,13 @@ const Header = () => {
     headerData = headerData.filter((item) => item.linkName !== "Admin");
   }
 
-
-
-
-
-
   const userButton = (
-    <button className="dark:hover:text-white flex items-center gap-2 text-sm">
+    <button onClick={()=>{handleLogout()}} className="dark:hover:text-white flex items-center gap-2 text-sm">
       <img className="w-10 h-10 rounded-full" src={auth?.user?.avatar} alt="User Avatar" />
-      <p className="text-center mx-auto">{auth?.user?.name}</p>
+      <p className="text-center mx-auto">Logout</p>
     </button>
   );
+
   
   const adminLink = (
     <Link
@@ -100,6 +91,9 @@ const Header = () => {
   
 
 
+  function handleLogout() {
+    window.open(`${BACKEND_URL}/auth/logout`, "_self");
+  }
 
 
 
@@ -133,9 +127,9 @@ const Header = () => {
           })}
 
 <>
-    {auth?.isUser ? (
+    {user?.isUser ? (
       <>
-          {auth?.isAdmin ? adminLink : null}
+          {user?.isAdmin ? adminLink : null}
         {userButton}
       </>
     ) : (

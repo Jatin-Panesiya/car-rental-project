@@ -47,14 +47,7 @@ const Sidebar = () => {
       linkName: "Manage Orders",
       linkNameShort: "Orders",
     },
-    {
-      id: 4,
-      linkPath: "/admin/feedback",
-      icon: RiFeedbackFill,
-      linkName: "Feedbacks",
-      linkNameShort: "Feeback",
-    },
-    {
+     {
       id: 5,
       linkPath: "/",
       icon: GrPowerShutdown,

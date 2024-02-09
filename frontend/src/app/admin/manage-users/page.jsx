@@ -16,6 +16,7 @@ const fakeUserData = [
   { name: "Paras", email: "paras@gmail.com" },
   { name: "Tejas", email: "tejas@gmail.com" },
 ];
+
 const page = () => {
   const menuStatus = useSelector((state) => state.menuStatus);
   const [filteredData, setFilteredData] = useState(fakeUserData);

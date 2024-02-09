@@ -40,7 +40,6 @@ export async function deleteCar(id) {
     },
   });
   const result = await response.json();
-  console.log(result);
   return result;
 }
 
@@ -59,10 +58,8 @@ export async function authenticate(data) {
       }
     );
 
-    console.log(response);
-
+    
     const result = await response.json();
-    console.log(result);
   } catch (error) {
     console.error("Authentication error:", error);
   }
@@ -81,10 +78,7 @@ export async function registerUser(data) {
         body: JSON.stringify(data),
       }
     );
-
-    console.log(response);
     const result = await response.json();
-    console.log(result);
   } catch (error) {
     console.error("Authentication error:", error);
   }
@@ -101,8 +95,7 @@ export async function editData(data, id) {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    console.log(result);
-  } catch (error) {
+   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
@@ -129,7 +122,6 @@ export async function getUser() {
 //date
 
 export async function bookDate(id, date) {
-  console.log(date)
   try {
     const response = await fetch(`${BACKEND_URL}/cars/book/${id}`, {
       method: "POST",
@@ -161,8 +153,7 @@ export async function sendReview(data) {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    console.log(result);
-  } catch (error) {
+    } catch (error) {
     console.error("Error fetching data:", error);
   }
 }

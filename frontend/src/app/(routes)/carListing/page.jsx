@@ -24,9 +24,8 @@ const page = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const isLoggedInUser = useSelector((state) => state.auth.isUser);
-  console.log(isLoggedInUser)
 
-
+  //tets
   const router = useRouter();
   async function dataFetch() {
     try {
@@ -35,8 +34,7 @@ const page = () => {
       setSearchedData(data);
       setIsDataLoaded(true);
     } catch (err) {
-      console.log({ err });
-    }
+     }
   }
   useEffect(() => {
     dataFetch();

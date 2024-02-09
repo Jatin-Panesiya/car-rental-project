@@ -53,7 +53,7 @@ const page = () => {
   }
   if (!isUser || !isAdmin) return <Loading />;
 
-  return (
+  return <>
     <form
       onSubmit={handleAdd}
       method="POST"
@@ -316,7 +316,7 @@ const page = () => {
         </span>
       </div>
     </form>
-  );
+    </>
 };
 
 export default page;
