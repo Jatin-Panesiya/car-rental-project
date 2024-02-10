@@ -1,11 +1,13 @@
 'use client'
 
+import { getUsers } from "@/Structure/ApiHandler";
 import DeleteModal from "@/components/admin_components/DeleteModal";
 import Sidebar from "@/components/admin_components/Sidebar";
 import Loading from "@/components/user_components/Loading";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+
 
 const fakeUserData = [
   { name: "Tejas", email: "tejas@gmail.com" },
@@ -24,13 +26,34 @@ const page = () => {
   const [isBanModel, setIsBanModel] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const [banId, setBanId] = useState("");
+  const [data, setData] = useState([])
+
+
+  async function getData() {
+    const res = await getUsers();
+    setData(res)
+
+
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
+
 
   function handleChange(e) {
     const inputValue = e.target.value;
-    const dataToShow = fakeUserData.filter((data) => {
+    if (inputValue === "" || inputValue === null) {
+
+      const data = getData()
+      setData(data);
+
+    }
+    const dataToShow = data.filter((data) => {
       return data.name.toLowerCase().includes(inputValue.toLowerCase());
     });
-    setFilteredData(dataToShow);
+    setData(dataToShow);
   }
   async function handleModalDelete() {
     // const newData = await deleteCar(deleteId);
@@ -58,9 +81,9 @@ const page = () => {
   const router = useRouter();
   const { isUser, isAdmin } = useSelector((state) => state.auth);
   if (!isUser || !isAdmin) {
-    router.push("/");
+    // router.push("/");
   }
-  if (!isUser || !isAdmin) return <Loading />;
+  //if (!isUser || !isAdmin) return <Loading />;
   return (
     <>
       <Sidebar />
@@ -92,7 +115,7 @@ const page = () => {
         />
 
         <div className="my-5 overflow-auto">
-          {filteredData.length > 0 ? (
+          {data.length > 0 ? (
             <table className="table-auto w-[90%] mx-auto text-center border border-[#f1f5f9] dark:border-[#374151] ">
               <thead className="bg-[#f1f5f9] dark:bg-[#374151] text-lg font-sans ">
                 <tr className="py-5">
@@ -102,14 +125,13 @@ const page = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map(({ name, email }, i) => (
+                {data.map(({ full_name, email, name }, i) => (
                   <tr
                     key={i}
-                    className={`${
-                      i % 2 !== 0 && "bg-[#f1f5f9] dark:bg-[#374151]"
-                    }`}
+                    className={`${i % 2 !== 0 && "bg-[#f1f5f9] dark:bg-[#374151]"
+                      }`}
                   >
-                    <td className="py-3 px-2">{name}</td>
+                    <td className="py-3 px-2">{full_name || name}</td>
                     <td className="px-2">{email}</td>
                     <td>
                       <div className="flex gap-2 justify-center items-center">

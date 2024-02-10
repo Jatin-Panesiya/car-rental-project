@@ -119,6 +119,48 @@ export async function getUser() {
   }
 }
 
+
+
+//get booking
+export async function getBooking() {
+  try {
+    const response = await fetch(`${BACKEND_URL}/booking/booked-cars`, {
+      method: "GET",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {};
+  }
+}
+
+
+
+//get users
+export async function getUsers() {
+  try {
+    const response = await fetch(`${BACKEND_URL}/booking/users`, {
+      method: "GET",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {};
+  }
+}
+
+
+
 //date
 
 export async function bookDate(id, date) {
